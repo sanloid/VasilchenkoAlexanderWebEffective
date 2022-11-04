@@ -1,0 +1,332 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+a {
+    text-decoration: none;
+}
+
+.body{
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    max-width: 1440px;
+    padding: 0 9.375%;
+    margin: 0 auto;
+    font-family: 'Inter';
+}
+
+.header {}
+
+.bg {
+    display: flex;
+    justify-content: right;
+    z-index: -2;
+    position: absolute;
+    width: 100%;
+    opacity: 0.4;
+    top: 5%;
+}
+
+.bg-2 {
+    display: flex;
+    justify-content: right;
+    z-index: -1;
+    position: absolute;
+    width: 100%;
+    top: 20%;
+}
+
+.container_shadow {
+    max-width: 1440px;
+    padding: 0 9.375%;
+    margin: 0 auto;
+    font-family: 'Inter';
+    background-color: white;
+    box-shadow: 0px 2px 4px rgba(38, 50, 56, 0.16);
+}
+
+.nav {
+    margin-bottom: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 96px;
+}
+
+.logo {
+    display: flex;
+}
+
+.logo__img {}
+
+.logo__name {
+    font-family: 'Inter';
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 56px;
+    letter-spacing: -1px;
+    color: var(--gray-dark);
+}
+
+.list {
+    align-items: center;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 32px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    letter-spacing: 0.2px;
+}
+
+.list__item:last-child{
+    display: none;
+}
+
+
+.list__item {}
+
+
+.list__link {
+    padding-left: 16px;
+    padding-right: 16px;
+    color: var(--purple-dark);
+}
+
+.list__link_active {
+    padding-left: 16px;
+    padding-right: 16px;
+    color: var(--gray-dark);
+}
+
+.dots {
+    color: var(--yelow-light);
+}
+
+.nav-logo-block {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.menu {
+    display: none;
+}
+
+.down_arrow {
+    display: none;
+}
+
+.nav__btn {
+    height: 64px;
+    padding: 16px 16px;
+    background: var(--gray-dark);
+    border: 1px solid var(--gray-dark);
+    border-radius: 40px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 36px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    letter-spacing: 0.25px;
+    color: white;
+    cursor: pointer;
+}
+
+.nav__btn:active {
+    background: var(--purple-dark);
+    border-color: var(--purple-dark);
+}
+
+
+.heading {
+    margin-bottom: 64px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 96px;
+    line-height: 104px;
+    align-items: center;
+    text-align: center;
+    letter-spacing: -3px;
+    color: var(--gray-dark);
+    text-shadow: 0px 4px 0px white;
+    text-align: center;
+}
+
+.heading-fine {
+    color: var(--acid-pink);
+    display: inline-block;
+    position: relative;
+}
+
+.heading-fine::after {
+    content: " ";
+    background-color: var(--green-light);
+    position: absolute;
+    display: block;
+    width: 110%;
+    height: 50%;
+    z-index: -1;
+    left: -4.5%;
+    top: 60%;
+    border-radius: 50px;
+}
+
+.subheading {
+    font-weight: 900;
+    font-size: 64px;
+    line-height: 77px;
+    display: flex;
+    justify-content: center;
+    letter-spacing: -1px;
+    color: var(--gray-dark);
+    text-align: center;
+}
+
+.tiles {
+    display: grid;
+    grid-gap: 30px;
+    width: 100%;
+    height: 766px;
+    grid-template-areas:
+        "text green green text2 text2"
+        "yellow green green text2 text2"
+        "yellow green green light-purple blue"
+        "yellow pink purple purple light-orange"
+        "learnmore pink purple purple light-orange"
+        "learnmore pink purple purple e6"
+        "a7 b7 purple purple e7";
+    grid-template-columns: 270fr 270fr 170fr 170fr 170fr;
+    grid-template-rows: 88fr 10fr 222fr 172fr 20fr 32fr 42fr;
+    margin-bottom: 80px;
+}
+
+.text {
+    grid-area: text;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 32px;
+    color: var(--gray-dark);
+}
+
+.text-2 {
+    grid-area: text2;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 32px;
+    color: var(--gray-dark);
+    display: flex;
+    align-items: flex-end;
+}
+
+.yellow {
+    grid-area: yellow;
+    background-color: var(--yelow-light);
+    border-radius: 15px;
+    padding: 16px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 32px;
+    text-align: center;
+    letter-spacing: 0.2px;
+    color: var(--gray-dark);
+}
+
+.learn-more {
+    grid-area: learnmore;
+    border-radius: 10px;
+    box-shadow: 0px 8px 8px rgba(38, 50, 56, 0.12);
+    border: none;
+    border-radius: 40px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    letter-spacing: -0.5px;
+    color: var(--purple-dark);
+    cursor: pointer;
+}
+
+.learn-more:hover {
+    transition: 0.5s all;
+    background: var(--purple-dark);
+    color: white;
+}
+
+.green {
+    grid-area: green;
+    background-color: var(--acid-green);
+    border-radius: 15px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    letter-spacing: -1px;
+    color: white;
+}
+
+.pink {
+    grid-area: pink;
+    background-color: var(--acid-pink);
+    border-radius: 15px;
+}
+
+.purple {
+    grid-area: purple;
+    background-color: var(--purple-dark);
+    border-radius: 15px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    letter-spacing: -1px;
+    color: white;
+
+}
+
+.light-purple {
+    grid-area: light-purple;
+    background-color: var(--purple);
+    border-radius: 15px;
+}
+
+.blue {
+    grid-area: blue;
+    background-color: var(--blue);
+    border-radius: 28px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.light-orange {
+    grid-area: light-orange;
+    background-color: var(--pink-light);
+    border-radius: 15px;
+}

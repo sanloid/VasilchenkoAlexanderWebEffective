@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style/reset.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style/variables.css">
+    <link rel="stylesheet" href="style/header.css">
+    <link rel="stylesheet" href="style/pricing.css">
+    <link rel="stylesheet" href="style/features.css">
+    <link rel="stylesheet" href="style/footer.css">
+    <link rel="stylesheet" href="style/mobile-header.css">
+    <link rel="stylesheet" href="style/mobile-pricing.css">
+    <link rel="stylesheet" href="style/mobile-features.css">
+    <link rel="stylesheet" href="style/mobile-footer.css">
+    <script src="./index.js"></script>
+    <title>Document</title>
+</head>
+
+<body class="body">
+
+    <header class="header">
+
+        <div class="container_shadow">
+            <nav class="nav">
+                <div class="nav-logo-block">
+                    <div class="menu" onclick="showmenu()">
+                        <img src="./img/icon-menu.jpg" alt="">
+                    </div>
+                    <a class="logo" href="">
+                        <img class="logo__img" src="img/logo.svg" alt="">
+                        <span class="logo__name">
+                            Grid
+                        </span>
+                    </a>
+                </div>
+                <ul class="list">
+                    <li class="list__item ">
+                        <a class="list__link_active" href="">How it works</a>
+                    </li>
+                    <li class="list__item">
+                        <span class="dots">•</span>
+                    </li>
+                    <li class="list__item ">
+                        <a class="list__link" href="">Who we are</a>
+                    </li>
+                    <li class="list__item">
+                        <span class="dots">•</span>
+                    </li>
+                    <li class="list__item ">
+                        <a class="list__link" href="">What we do</a>
+                    </li>
+                    <li class="list__item">
+                        <span class="dots">•</span>
+                    </li>
+                    <li class="list__item ">
+                        <a class="list__link" href="">Contact us</a>
+                    </li>
+                    <li class="list__item list__link" onclick="hidemenu()">
+                        &times;
+                    </li>
+                </ul>
+                <button class="nav__btn">Sign In</button>
+
+
+            </nav>
+        </div>
+
+        <div class="bg">
+            <img src="./img/bg-header.jpg" alt="">
+        </div>
+        <div class="bg-2">
+            <img src="./img/bg-header-2.png" alt="">
+        </div>
+
+        <div class="container">
+
+            <h1 class="heading">
+                Combine
+                <span class="heading-fine">
+                    fine
+                </span>
+                images
+                <span class="subheading">
+                    To represent a product
+                </span>
+            </h1>
+
+            <a class="down_arrow">
+                <img src="./img/downarrow.png" alt="">
+            </a>
+
+            <div class="tiles">
+                <div class="text">Use mixed grid with imagery, replace with your own photos and descriptions</div>
+                <div class="text-2">This is multipurpose grid, it fits for portfolio, services or agency web site</div>
+                <div class="yellow">
+                    We aimed to deliver HQ templates for Figma
+                    <p>
+                        Used by 123 people
+                    </p>
+                </div>
+                <button class="learn-more">Learn more</button>
+                <div class="green">
+                    Image Title
+                </div>
+                <div class="pink"></div>
+                <div class="purple">
+                    Caption
+                </div>
+                <div class="light-purple"></div>
+                <div class="blue">
+                    <img src="img/blue.jpg" alt="">
+                </div>
+                <div class="light-orange"></div>
+            </div>
+
+        </div>
+
+    </header>
+
+    <section class="pricing">
+        <div class="container">
+
+            <div class="pricing__heading">
+                <h2 class="pricing__title">Affordable pricing</h2>
+                <h3 class="pricing__radios">Bill me
+                    <span class="pricing__radio_active">
+                        &nbsp;
+                        monthly
+                    </span>
+                    •
+                    <span class="pricing__radio">
+                        yearly
+                    </span>
+                </h3>
+            </div>
+
+            <div class="cards">
+
+                <div class="card">
+                    <div class="card-inner">
+                        <div class="card__name">Like a pussy</div>
+                        <div class="card__price">Free <span class="card__price-small"> / forever </span> </div>
+                        <ul class="card__feature-list">
+                            <li class="card__feature"> <img class="mark_gray" src="./img/pricing/mark.svg" alt="">
+                                Components-driven system</li>
+                            <li class="card__feature"> <img class="mark_gray" src="./img/pricing/mark.svg" alt="">
+                                Sales-boosting landing pages</li>
+                            <li class="card__feature"> <img class="mark_gray" src="./img/pricing/mark.svg" alt="">
+                                Awesome Feather icons pack</li>
+                        </ul>
+                    </div>
+                    <button class="card__btn">Try for free</button>
+                </div>
+
+                <div class="card">
+                    <div class="card-inner">
+                        <div class="card__name">👤 Individual</div>
+                        <div class="card__price">$24 <span class="card__price-small"> / month </span> </div>
+                        <ul class="card__feature-list">
+                            <li class="card__feature"> <img class="mark_yellow" src="./img/pricing/mark.svg" alt="">
+                                Components-driven system</li>
+                            <li class="card__feature"> <img class="mark_yellow" src="./img/pricing/mark.svg" alt="">
+                                Sales-boosting landing pages</li>
+                            <li class="card__feature"> <img class="mark_yellow" src="./img/pricing/mark.svg" alt="">
+                                Awesome Feather icons pack</li>
+                            <li class="card__feature"> <img class="mark_yellow" src="./img/pricing/mark.svg" alt="">
+                                Themed into 3 different styles</li>
+                            <li class="card__feature"> <img class="mark_yellow" src="./img/pricing/mark.svg" alt="">
+                                Will help to learn Figma</li>
+                        </ul>
+                    </div>
+                    <button class="card__btn">Regular license</button>
+                </div>
+
+                <div class="card">
+                    <div class="card-inner">
+                        <div class="card__name">👥 Corporate</div>
+                        <div class="card__price">$12 <span class="card__price-small"> / editor </span></div>
+                        <ul class="card__feature-list">
+                            <li class="card__feature"> <img class="mark_green" src="./img/pricing/mark.svg" alt="">
+                                Components-driven system</li>
+                            <li class="card__feature"> <img class="mark_green" src="./img/pricing/mark.svg" alt="">
+                                Sales-boosting landing pages</li>
+                            <li class="card__feature"> <img class="mark_green" src="./img/pricing/mark.svg" alt="">
+                                Awesome Feather icons pack</li>
+                            <li class="card__feature"> <img class="mark_green" src="./img/pricing/mark.svg" alt="">
+                                Themed into 3 different styles</li>
+                        </ul>
+                    </div>
+                    <button class="card__btn">Extended license</button>
+                </div>
+
+            </div>
+        </div>
+
+    </section>
+
+    <section class="features">
+        <div class="container">
+            <div class="features__heading">
+                <h2 class="features__title">Delivering good designs since 1954 🚚💨</h2>
+                <h3 class="features__description">We’re the first multi-purpose design kit solutions for businesses. We
+                    help you bridge <br>
+                    gaps between your layouts, templates and developers to empower all involved.</h3>
+            </div>
+            <div class="features__cards">
+                <div class="features__card">
+                    <div class="card-inner">
+                        <img src="./img/svg-features/features-1.svg" alt="" class="features__img"
+                            style="background-color: #E84393;">
+                        <div class="features__card-name">Support</div>
+                        <div class="features__card-description">Delivering faster and more personalized support with
+                            shared
+                            screens and cool design systems for Figma</div>
+                    </div>
+                    <button class="features__card-btn">Learn more</button>
+                </div>
+                <div class="features__card">
+                    <div class="card-inner">
+                        <img src="./img/svg-features/features-2.svg" alt="" class="features__img"
+                            style="background-color: #0984E3;">
+                        <div class="features__card-name">Sales growth</div>
+                        <div class="features__card-description">Identify qualified customers with easy-to-use live chat
+                            messaging and AI-based Sales Bot</div>
+                    </div>
+                    <button class="features__card-btn">Learn more</button>
+                </div>
+                <div class="features__card">
+                    <div class="card-inner">
+                        <img src="./img/svg-features/features-3.svg" alt="" class="features__img"
+                            style="background-color: #6C5CE7;">
+                        <div class="features__card-name">Coponents-driven</div>
+                        <div class="features__card-description">Delivering faster and more personalized support with
+                            shared
+                            screens and cool design systems for Figma</div>
+                    </div>
+                    <button class="features__card-btn">Learn more</button>
+                </div>
+                <div class="features__card">
+                    <div class="card-inner">
+                        <img src="./img/svg-features/features-4.svg" alt="" class="features__img"
+                            style="background-color: #00B894;">
+                        <div class="features__card-name">Swap the icon</div>
+                        <div class="features__card-description">You can toggle to any icon within Instances and
+                            customize
+                            outlined stroke to more bolder or lighter</div>
+                    </div>
+                    <button class="features__card-btn">Learn more</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__blocks">
+                <div class="copy-right">
+                    Copyright © 2018 • Your Company <br>
+                    All rights reserved
+                </div>
+                <div class="made-in">
+                    Made in Setproduct.com <br>
+                    One man digital agency
+                </div>
+                <div class="folow-us-social">
+                    <div class="footer__top-name">follow us</div>
+                    <a href="#">
+                        <img src="./img/footer/1.svg" alt="" class="folow-us-socioal__img">
+                    </a>
+                    <a href="#">
+                        <img src="./img/footer/2.svg" alt="" class="folow-us-socioal__img">
+                    </a>
+                    <a href="#">
+                        <img src="./img/footer/3.svg" alt="" class="folow-us-socioal__img">
+                    </a>
+                    <a href="#">
+                        <img src="./img/footer/4.svg" alt="" class="folow-us-socioal__img">
+                    </a>
+                </div>
+                <div class="folow-us">
+                    <div class="footer__top-name">follow us</div>
+                    <a class="folow-us__email" href="mailto:hello@fapsterapp.com">hello@fapsterapp.com</a>
+                </div>
+                <div class="information">
+                    <div class="footer__top-name">information</div>
+                    <div class="information__topics">
+                        <a href="#" class="information__topic">About Fapster app</a>
+                        <a href="#" class="information__topic">Onhovered / Active</a>
+                        <a href="#" class="information__topic">We are hiring!</a>
+                        <a href="#" class="information__topic">Get in Touch</a>
+                        <a href="#" class="information__topic">Privacy Policy</a>
+                        <a href="#" class="information__topic">Resources</a>
+                        <a href="#" class="information__topic">Things We Like</a>
+                        <a href="#" class="information__topic">Terms of Service</a>
+                    </div>
+                </div>
+                <div class="keep-in-touch">
+                    <div class="footer__top-name">keep in touch</div>
+                    <form class="keep-in-touch__form">
+                        <div class="keep-in-touch__field-name">
+                            <!-- <label for="name">Your name</label> -->
+                            <input type="text" name="name" id="name" required placeholder="Your name">
+                            <img src="" class="keep-in-touch__field-name-img" alt="">
+                        </div>
+                        <div class="keep-in-touch__field-email">
+                            <!-- <label for="email">E-mail</label> -->
+                            <input type="email" name="email" id="email" required placeholder="E-mail">
+                        </div>
+                        <div class="keep-in-touch__field-textarea">
+                            <!-- <label for="message">Leave your message|</label> -->
+                            <textarea name="message" id="message" placeholder="Leave your message|"></textarea>
+                        </div>
+                        <button class="keep-in-touch__submit-btn" type="submit">SEND</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>

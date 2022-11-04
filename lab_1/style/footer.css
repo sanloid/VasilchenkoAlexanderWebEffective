@@ -1,0 +1,200 @@
+textarea {
+    resize: none;
+}
+
+.footer {
+    margin-top: 80px;
+    margin-bottom: 36px;
+}
+
+.footer__blocks {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+}
+
+.folow-us-social {}
+
+.footer__top-name {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 12px;
+    line-height: 15px;
+    display: flex;
+    align-items: center;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--gray-light-3);
+}
+
+.folow-us-socioal__img {
+    padding-top: 8px;
+    padding-right: 36px;
+}
+
+.folow-us {}
+
+.folow-us__email {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 48px;
+    display: flex;
+    align-items: flex-end;
+    letter-spacing: -0.5px;
+    color: var(--purple-dark);
+}
+
+.information {}
+
+.information__topics {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.information__topic {
+    padding-top: 16px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.25px;
+    color: var(--gray-dark);
+}
+
+.keep-in-touch {}
+
+.keep-in-touch__form {
+    height: 158px;
+    margin-top: 16px;
+    display: grid;
+    grid-gap: 30px;
+    grid-template-areas: "name email email" "textarea textarea submit";
+    grid-template-columns: 270fr 70fr 170fr;
+    grid-template-rows: 48fr 80fr;
+}
+
+.keep-in-touch__form>input:focus,
+textarea:focus,
+input,
+textarea {
+    border: none;
+    outline: none;
+}
+
+.keep-in-touch__field-name {
+    grid-area: name;
+}
+
+.keep-in-touch__field-name>input,
+.keep-in-touch__field-email>input {
+    border-radius: 15px;
+    padding: 10px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 32px;
+    display: flex;
+    align-items: center;
+    color: var(--gray-dark);
+
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.keep-in-touch__field-name>input {
+    background: url(./../img/footer/name.svg) right center no-repeat;
+    background-color: rgba(194, 194, 194, 0.24);
+}
+
+.keep-in-touch__field-email>input {
+    background: url(./../img/footer/mail.svg) right center no-repeat;
+    background-color: rgba(194, 194, 194, 0.24);
+}
+
+.keep-in-touch__field-name>input::placeholder,
+.keep-in-touch__field-email>input::placeholder {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 32px;
+    color: var(--gray-dark);
+}
+
+.keep-in-touch__field-email {
+    grid-area: email;
+}
+
+.keep-in-touch__field-textarea {
+    grid-area: textarea;
+}
+
+.keep-in-touch__field-textarea>textarea {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 32px;
+    letter-spacing: 0.2px;
+    color: var(--purple-dark);
+
+
+    box-sizing: border-box;
+    width: 100%;
+
+    background-color: rgba(194, 194, 194, 0.24);
+    border: 2px solid var(--purple-dark);
+    border-radius: 16px;
+
+    padding: 16px;
+
+    background: url(./../img/footer/textarea.svg) right top no-repeat;
+}
+
+.keep-in-touch__field-textarea>textarea::placeholder {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 32px;
+    letter-spacing: 0.2px;
+    color: var(--purple-dark);
+
+}
+
+.keep-in-touch__submit-btn {
+    grid-area: submit;
+    background: var(--purple-dark);
+    box-shadow: 0px 8px 24px rgba(38, 50, 56, 0.1), 0px 16px 32px rgba(38, 50, 56, 0.08);
+    border-radius: 16px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    letter-spacing: 0.25px;
+    color: #FFFFFF;
+    text-shadow: 0px 2px 4px rgba(38, 50, 56, 0.16), 0px 4px 8px rgba(38, 50, 56, 0.08);
+    border: none;
+    cursor: pointer;
+}
+
+.keep-in-touch__submit-btn>button {}
+
+
+.copy-right {
+    display: none;
+}
+.made-in {
+    display: none;
+}
