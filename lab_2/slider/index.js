@@ -6,8 +6,12 @@ if (localStorage.getItem('current') === null) {
 
 let imgs = document.querySelectorAll('img.slider__img')
 imgs[current].classList.remove('hide');
+var interval = setInterval(() => move(1), 6000);
+
 
 function move(increment) {
+    clearTimeout(interval);
+    interval = setInterval(() => move(1), 6000);
     current += increment;
 
     if (current === imgs.length) {
