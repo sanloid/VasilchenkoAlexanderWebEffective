@@ -60,6 +60,8 @@
     flex-direction: column;
     justify-content: space-between;
     transition: 0.2s all;
+    position: relative;
+    background: white;
 }
 
 .card:hover {
@@ -67,6 +69,13 @@
     box-shadow: 0px 8px 8px rgba(38, 50, 56, 0.12), 0px 16px 24px rgba(38, 50, 56, 0.08);
 }
 
+.card:hover::after {
+    content: url(./../img/pricing/waves.svg);
+    z-index: -1;
+    position: absolute;
+    top: 81%;
+    left: -6%;
+}
 
 .card__name {
     font-family: 'Inter';
