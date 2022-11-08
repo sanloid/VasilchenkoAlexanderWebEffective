@@ -1,7 +1,3 @@
-.pricing {}
-
-.pricing__heading {}
-
 .pricing__title {
     font-family: 'Inter';
     font-style: normal;
@@ -32,8 +28,6 @@
     margin-bottom: 40px;
 }
 
-.pricing__radio {}
-
 .pricing__radio_active {
     position: relative;
     color: var(--purple-dark);
@@ -61,7 +55,6 @@
 }
 
 .card {
-    /* height: 420px; */
     padding: 32px;
     display: flex;
     flex-direction: column;

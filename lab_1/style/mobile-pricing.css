@@ -4,10 +4,6 @@
         order: 3;
     }
 
-    .container {}
-
-    .pricing__heading {}
-
     .pricing__title {
         font-size: 32px;
         line-height: 48px;
@@ -20,27 +16,8 @@
         letter-spacing: -0.25px;
     }
 
-    .pricing__radio_active {}
-
-    .pricing__radio {}
-
     .cards {
         display: flex;
         flex-direction: column;
     }
-
-    .card {}
-
-    .card__name {}
-
-    .card__price {}
-
-    .card__price-small {}
-
-    .card__feature-list {}
-
-    .card__feature {}
-
-    .card__btn {}
 }
-

@@ -4,7 +4,7 @@ a {
     text-decoration: none;
 }
 
-.body{
+.body {
     display: flex;
     flex-direction: column;
 }
@@ -15,8 +15,6 @@ a {
     margin: 0 auto;
     font-family: 'Inter';
 }
-
-.header {}
 
 .bg {
     display: flex;
@@ -58,8 +56,6 @@ a {
     display: flex;
 }
 
-.logo__img {}
-
 .logo__name {
     font-family: 'Inter';
     font-weight: 700;
@@ -82,13 +78,9 @@ a {
     letter-spacing: 0.2px;
 }
 
-.list__item:last-child{
+.list__item:last-child {
     display: none;
 }
-
-
-.list__item {}
-
 
 .list__link {
     padding-left: 16px;

@@ -3,8 +3,6 @@
         order: 4;
     }
 
-    .container {}
-
     .footer__blocks {
         display: grid;
         grid-template-columns: 1fr;
@@ -21,39 +19,19 @@
         display: none;
     }
 
-    .folow-us-socioal__img {}
-
     .folow-us {
         display: flex;
         justify-content: center;
         margin-bottom: 24px;
     }
 
-    .folow-us__email {}
-
     .information {
         display: none;
     }
 
-    .information__topics {}
-
-    .information__topic {}
-
     .keep-in-touch {
         display: none;
     }
-
-    .keep-in-touch__form {}
-
-    .keep-in-touch__field-name {}
-
-    .keep-in-touch__field-name-img {}
-
-    .keep-in-touch__field-email {}
-
-    .keep-in-touch__field-textarea {}
-
-    .keep-in-touch__submit-btn {}
 
     .copy-right {
         display: block;
