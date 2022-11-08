@@ -4,7 +4,10 @@ textarea {
 
 .footer {
     margin-top: 80px;
-    margin-bottom: 36px;
+}
+
+.footer>div{
+    margin-bottom: 80px;
 }
 
 .footer__blocks {
@@ -12,8 +15,6 @@ textarea {
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(2, 1fr);
 }
-
-.folow-us-social {}
 
 .footer__top-name {
     font-family: 'Inter';
@@ -33,8 +34,6 @@ textarea {
     padding-right: 36px;
 }
 
-.folow-us {}
-
 .folow-us__email {
     font-family: 'Inter';
     font-style: normal;
@@ -46,8 +45,6 @@ textarea {
     letter-spacing: -0.5px;
     color: var(--purple-dark);
 }
-
-.information {}
 
 .information__topics {
     display: grid;
@@ -66,8 +63,6 @@ textarea {
     letter-spacing: 0.25px;
     color: var(--gray-dark);
 }
-
-.keep-in-touch {}
 
 .keep-in-touch__form {
     height: 158px;
@@ -189,12 +184,15 @@ textarea {
     cursor: pointer;
 }
 
-.keep-in-touch__submit-btn>button {}
-
-
 .copy-right {
     display: none;
 }
+
 .made-in {
     display: none;
+}
+
+.footer-bg{
+    width: 100vw;
+    z-index: -1;
 }
