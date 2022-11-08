@@ -10,7 +10,7 @@ var interval = setInterval(() => move(1), 6000);
 
 
 function move(increment) {
-    clearTimeout(interval);
+    clearInterval(interval);
     interval = setInterval(() => move(1), 6000);
     current += increment;
 
