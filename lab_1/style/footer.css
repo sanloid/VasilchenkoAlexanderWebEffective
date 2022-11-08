@@ -4,7 +4,10 @@ textarea {
 
 .footer {
     margin-top: 80px;
-    margin-bottom: 36px;
+}
+
+.footer>div{
+    margin-bottom: 80px;
 }
 
 .footer__blocks {
@@ -187,4 +190,9 @@ textarea {
 
 .made-in {
     display: none;
+}
+
+.footer-bg{
+    width: 100vw;
+    z-index: -1;
 }
