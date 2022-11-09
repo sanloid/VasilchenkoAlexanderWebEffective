@@ -1,14 +1,17 @@
 let inputs = document.querySelectorAll("input.inp");
 var timer;
-setTime(1, 0);
+var onResetColor = '#fff', onPlayColor = 'green', onFinishColor = 'red', onPauseColor = 'gray';
+setTime(0, 10);
 
 
 function start() {
+    setBgTo(onPlayColor);
     let time = getTime();
     let seconds = minSecondsToSeconds(time['min'], time['sec']);
     timer = setTimeout(() => start(), 1000);
     seconds -= 1;
     if (seconds === 0) {
+        setBgTo(onFinishColor);
         clearTimeout(timer);
     }
     let buff = secondsToMinSeconds(seconds);
@@ -17,11 +20,13 @@ function start() {
 
 function stop() {
     clearTimeout(timer);
-    setTime(1, 0);
+    setBgTo(onResetColor);
+    setTime(0, 10);
 }
 
 function pause() {
     clearTimeout(timer);
+    setBgTo(onPauseColor);
 }
 
 function getTime() {
@@ -39,4 +44,8 @@ function secondsToMinSeconds(sec) {
 
 function minSecondsToSeconds(min, sec) {
     return min * 60 + sec
+}
+
+function setBgTo(color) {
+    document.body.style.backgroundColor = color;
 }
