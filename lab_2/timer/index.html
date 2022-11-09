@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,6 +8,21 @@
     <link rel="stylesheet" href="./style/style.css">
     <title>lab-2</title>
 </head>
+
 <body>
+    <div class="timer">
+        <div class="display">
+            <input type="number" class="inp seconds-input">
+            <span>:</span>
+            <input type="number" class="inp minutes-input">
+        </div>
+        <div class="controls">
+            <div onclick="start()" class="start">start</div>
+            <div onclick="stop()" class="stop">reset</div>
+            <div onclick="pause()" class="pause">stop</div>
+        </div>
+    </div>
 </body>
+<script src="./index.js"></script>
+
 </html>
