@@ -10,12 +10,14 @@ function start() {
     let seconds = minSecondsToSeconds(time['min'], time['sec']);
     timer = setTimeout(() => start(), 1000);
     seconds -= 1;
-    if (seconds === 0) {
+    if (seconds <= 0) {
         setBgTo(onFinishColor);
         clearTimeout(timer);
+        setTime(0, 0);
+    } else {
+        let buff = secondsToMinSeconds(seconds);
+        setTime(buff['min'], buff['sec']);
     }
-    let buff = secondsToMinSeconds(seconds);
-    setTime(buff['min'], buff['sec']);
 }
 
 function stop() {
@@ -53,6 +55,6 @@ function setBgTo(color) {
 
 
 function lockInputs(lock) {
-        inputs[0].disabled = lock;
-        inputs[1].disabled = lock;
+    inputs[0].disabled = lock;
+    inputs[1].disabled = lock;
 }
