@@ -3,8 +3,8 @@ var timer;
 var onResetColor = '#fff', onPlayColor = 'green', onFinishColor = 'red', onPauseColor = 'gray';
 setTime(0, 10);
 
-
 function start() {
+    lockInputs(true);
     setBgTo(onPlayColor);
     let time = getTime();
     let seconds = minSecondsToSeconds(time['min'], time['sec']);
@@ -21,6 +21,7 @@ function start() {
 function stop() {
     clearTimeout(timer);
     setBgTo(onResetColor);
+    lockInputs(false);
     setTime(0, 10);
 }
 
@@ -48,4 +49,10 @@ function minSecondsToSeconds(min, sec) {
 
 function setBgTo(color) {
     document.body.style.backgroundColor = color;
+}
+
+
+function lockInputs(lock) {
+        inputs[0].disabled = lock;
+        inputs[1].disabled = lock;
 }
