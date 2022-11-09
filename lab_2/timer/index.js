@@ -1,6 +1,7 @@
 let inputs = document.querySelectorAll("input.inp");
 var timer;
 var onResetColor = '#fff', onPlayColor = 'green', onFinishColor = 'red', onPauseColor = 'gray';
+var audio = new Audio('./riseNshine.mp3');
 setTime(0, 10);
 
 function start() {
@@ -13,6 +14,7 @@ function start() {
     if (seconds <= 0) {
         setBgTo(onFinishColor);
         clearTimeout(timer);
+        audio.play();
         setTime(0, 0);
     } else {
         let buff = secondsToMinSeconds(seconds);
@@ -25,6 +27,8 @@ function stop() {
     setBgTo(onResetColor);
     lockInputs(false);
     setTime(0, 10);
+    audio.pause();
+    audio.currentTime = 0;
 }
 
 function pause() {
