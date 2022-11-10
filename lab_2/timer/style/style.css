@@ -11,6 +11,13 @@
     margin: 0 auto;
 }
 
+.time-btns {
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+}
+
 .inp {
     width: 40%;
     border: none;

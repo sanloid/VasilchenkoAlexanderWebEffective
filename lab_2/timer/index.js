@@ -82,6 +82,9 @@ function setBgTo(color) {
 function lockInputs(lock) {
     inputs[0].disabled = lock;
     inputs[1].disabled = lock;
+    document.querySelectorAll('button.time-btn').forEach((element, i) => {
+        element.disabled = lock;
+    })
 }
 
 inputs[0].addEventListener('input', () => {
@@ -90,4 +93,11 @@ inputs[0].addEventListener('input', () => {
 
 inputs[1].addEventListener('input', () => {
     localStorage.setItem('sec', inputs[1].value);
+})
+
+let timesArray = [1, 5, 10]
+document.querySelectorAll('button.time-btn').forEach((element, i) => {
+    element.addEventListener('click', () => {
+        setTime(timesArray[i], 0);
+    })
 })
