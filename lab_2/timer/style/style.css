@@ -25,7 +25,6 @@
 
 .display {
     margin: 0 auto;
-    /* width: 30%; */
     display: flex;
     justify-content: space-around;
     margin-bottom: 15px;
@@ -49,26 +48,16 @@
     margin-bottom: 20px;
 }
 
-.seconds-input {}
-
 .minutes {
     display: flex;
     justify-content: space-between;
     margin-bottom: 20px;
 }
 
-.minutes-input {}
-
 .controls {
     display: flex;
     justify-content: space-between;
 }
-
-.start {}
-
-.stop {}
-
-.pause {}
 
 .start,
 .stop,
