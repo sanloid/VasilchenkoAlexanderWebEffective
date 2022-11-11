@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style/style.css">
+    <title>lab-2</title>
+</head>
+
+<body>
+    <div class="timer">
+        <div class="time-btns">
+            <button class="time-btn">1</button>
+            <button class="time-btn">5</button>
+            <button class="time-btn">10</button>
+        </div>
+        <div class="display">
+            <input type="number" class="inp seconds-input">
+            <span>:</span>
+            <input type="number" class="inp minutes-input">
+        </div>
+        <div class="controls">
+            <button onclick="start()" class="start">start</button>
+            <button onclick="stop()" class="stop">reset</button>
+            <button onclick="pause()" class="pause">stop</button>
+        </div>
+    </div>
+</body>
+<script src="./index.js"></script>
+</html>

@@ -1,0 +1,68 @@
+* {
+    font-size: 50px;
+}
+
+.timer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
+    width: 500px;
+    margin: 0 auto;
+}
+
+.time-btns {
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.inp {
+    width: 40%;
+    border: none;
+}
+
+.display {
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 15px;
+}
+
+.display__seconds {
+    font-size: 50px;
+}
+
+.dots {
+    font-size: 50px;
+}
+
+.display__minutes {
+    font-size: 50px;
+}
+
+.seconds {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.minutes {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.controls {
+    display: flex;
+    justify-content: space-between;
+}
+
+.start,
+.stop,
+.pause {
+    border: 2px rgb(195, 197, 44) solid;
+    border-radius: 10px;
+    padding: 10px;
+}
