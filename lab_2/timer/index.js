@@ -1,9 +1,15 @@
 let inputs = document.querySelectorAll("input.inp");
-var timer;
-var onResetColor = '#fff', onPlayColor = 'green', onFinishColor = 'red', onPauseColor = 'gray';
-var audio = new Audio('./riseNshine.mp3');
+let timer;
+const onResetColor = '#fff', onPlayColor = 'green', onFinishColor = 'red', onPauseColor = 'gray';
+let audio = new Audio('./riseNshine.mp3');
 
-let localMin = localStorage.getItem('min'), localSec = localStorage.getItem('sec'), localState = localStorage.getItem('state');
+let localMin = localStorage.getItem('min');
+let localSec = localStorage.getItem('sec');
+let localState = localStorage.getItem('state');
+
+let timeBtns = document.querySelectorAll('button.time-btn');
+let startBtn = document.querySelector('button.start');
+
 if (!localMin && !localSec && !localState) {
     setTime(0, 10);
 } else {
@@ -17,12 +23,12 @@ if (!localMin && !localSec && !localState) {
 }
 
 function start() {
-    document.querySelector('button.start').disabled = true;
+    startBtn.disabled = true;
     localStorage.setItem('state', 'start');
     lockInputs(true);
     setBgTo(onPlayColor);
-    let time = getTime();
-    let seconds = minSecondsToSeconds(time['min'], time['sec']);
+    const time = getTime();
+    let seconds = minSecondsToSeconds(time.min, time.sec);
     timer = setTimeout(() => start(), 1000);
     seconds -= 1;
     if (seconds <= 0) {
@@ -30,14 +36,14 @@ function start() {
         clearTimeout(timer);
         audio.play();
         setTime(0, 0);
-    } else {
-        let buff = secondsToMinSeconds(seconds);
-        setTime(buff['min'], buff['sec']);
+        return
     }
+    let buff = secondsToMinSeconds(seconds);
+    setTime(buff.min, buff.sec);
 }
 
 function stop() {
-    document.querySelector('button.start').disabled = false;
+    startBtn.disabled = false;
     localStorage.setItem('state', 'stop');
     clearTimeout(timer);
     setBgTo(onResetColor);
@@ -48,7 +54,7 @@ function stop() {
 }
 
 function pause() {
-    document.querySelector('button.start').disabled = false;
+    startBtn.disabled = false;
     lockInputs(true);
     localStorage.setItem('state', 'pause');
     clearTimeout(timer);
@@ -56,7 +62,7 @@ function pause() {
 }
 
 function getTime() {
-    return { "min": parseInt(inputs[0].value), "sec": parseInt(inputs[1].value) }
+    return { min: parseInt(inputs[0].value), sec: parseInt(inputs[1].value) }
 }
 
 function setTime(min, sec) {
@@ -67,7 +73,7 @@ function setTime(min, sec) {
 }
 
 function secondsToMinSeconds(sec) {
-    return { "min": (sec - (sec % 60)) / 60, "sec": sec % 60 }
+    return { min: (sec - (sec % 60)) / 60, sec: sec % 60 }
 }
 
 function minSecondsToSeconds(min, sec) {
@@ -82,7 +88,7 @@ function setBgTo(color) {
 function lockInputs(lock) {
     inputs[0].disabled = lock;
     inputs[1].disabled = lock;
-    document.querySelectorAll('button.time-btn').forEach((element, i) => {
+    timeBtns.forEach((element, i) => {
         element.disabled = lock;
     })
 }
@@ -95,8 +101,8 @@ inputs[1].addEventListener('input', () => {
     localStorage.setItem('sec', inputs[1].value);
 })
 
-let timesArray = [1, 5, 10]
-document.querySelectorAll('button.time-btn').forEach((element, i) => {
+const timesArray = [1, 5, 10]
+timeBtns.forEach((element, i) => {
     element.addEventListener('click', () => {
         setTime(timesArray[i], 0);
     })

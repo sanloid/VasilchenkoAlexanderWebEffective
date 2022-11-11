@@ -1,4 +1,4 @@
-var current = parseInt(localStorage.getItem('current'));
+let current = parseInt(localStorage.getItem('current'));
 if (localStorage.getItem('current') === null) {
     localStorage.setItem('current', 0);
     current = 0;
@@ -6,7 +6,7 @@ if (localStorage.getItem('current') === null) {
 
 let imgs = document.querySelectorAll('img.slider__img')
 imgs[current].classList.remove('hide');
-var interval = setInterval(() => move(1), 6000);
+let interval = setInterval(() => move(1), 6000);
 
 
 function move(increment) {
