@@ -15,7 +15,7 @@ const Card: React.FC<CardPropType> = ({ name, desc, img }) => {
                 </div>
                 <h2 className="text-xl font-medium mt-5">{name}</h2>
                 <p className="text-base leading-relaxed mt-2">{desc}</p>
-                <a className="cursor-pointer text-red-600 border-2 p-2 rounded-xl border-red-600 hover:bg-red-600 hover:text-white inline-flex items-center mt-3">
+                <a className="cursor-pointer text-red-600 dark:text-gray-600 border-2 p-2 rounded-xl border-red-600 dark:border-gray-600 hover:bg-red-600 dark:hover:bg-gray-600 hover:text-white dark:hover:text-white inline-flex items-center mt-3">
                     See More
                 </a>
             </div>

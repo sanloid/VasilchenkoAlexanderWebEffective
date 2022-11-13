@@ -3,7 +3,7 @@ import React from 'react'
 export default function Footer() {
 
     return (
-        <footer className="text-white body-font bg-red-acid">
+        <footer className="text-white body-font bg-red-acid dark:bg-gray-600">
             <div className="container px-5 py-8 mx-auto flex items-center sm:flex-row flex-col justify-between">
                 <a className="flex items-center md:justify-start justify-center h-10">
                     <img src="./marvel_logo.svg" className="w-full h-full" alt="" />
