@@ -1,10 +1,5 @@
 import React from 'react';
-
-export interface CardPropType {
-  name: string;
-  desc: string;
-  img: string;
-}
+import { CardPropType } from 'types/Card';
 
 const Card: React.FC<CardPropType> = ({ name, desc, img }) => {
   return (
