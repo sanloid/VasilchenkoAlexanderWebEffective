@@ -10,8 +10,8 @@ const Card: React.FC<CardPropType> = ({ name, desc, img }) => {
     return (
         <>
             <div className="p-4 md:w-1/3 font-marvel sm:mb-0 mb-6">
-                <div className="rounded-lg w-64">
-                    <img alt="content" className="object-cover object-center w-full h-full" src={img} />
+                <div className="rounded-lg h-64 overflow-hidden">
+                    <img alt="content" className="object-cover object-top w-full h-full" src={img} />
                 </div>
                 <h2 className="text-xl font-medium mt-5">{name}</h2>
                 <p className="text-base leading-relaxed mt-2">{desc}</p>
