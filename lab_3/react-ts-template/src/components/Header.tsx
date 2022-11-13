@@ -17,7 +17,7 @@ const Header: React.FC = () => {
                 </a>
                 <nav className="md:ml-auto flex flex-wrap items-center text-base justify-center">
                     {linksArr.map((e, i) =>
-                        <NavLink to={e.path}  className={linkStyles}>{e.name}</NavLink>
+                        <NavLink to={e.path} key={i} className={linkStyles}>{e.name}</NavLink>
                     )}
                 </nav>
             </div>
