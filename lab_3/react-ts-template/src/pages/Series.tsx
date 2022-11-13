@@ -1,5 +1,6 @@
 import React from 'react'
 import Card from '../components/Card'
+import SearchForm from '../components/SearchForm'
 
 export default function Series() {
     const seriesArr = [
@@ -12,6 +13,7 @@ export default function Series() {
     ]
     return (
         <>
+            <SearchForm />
             <section className="min-h-screen">
                 <div className="container px-5 py-24 mx-auto">
                     <div className="flex flex-wrap sm:-m-4 -mx-4 -mb-10 -mt-4">

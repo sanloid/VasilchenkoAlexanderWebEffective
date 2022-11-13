@@ -1,5 +1,6 @@
 import React from 'react'
 import Card from '../components/Card'
+import SearchForm from '../components/SearchForm'
 
 export default function Characters() {
     const CharactersArr = [
@@ -11,6 +12,7 @@ export default function Characters() {
     ]
     return (
         <>
+            <SearchForm />
             <section className="text-gray-600 body-font min-h-screen">
                 <div className="container px-5 py-24 mx-auto">
                     <div className="flex flex-wrap sm:-m-4 -mx-4 -mb-10 -mt-4">
