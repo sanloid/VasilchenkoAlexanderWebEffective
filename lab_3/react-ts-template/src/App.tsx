@@ -1,22 +1,21 @@
-import Characters from './pages/Characters'
-import './index.css'
-import Series from './pages/Series'
-import Comics from './pages/Comics'
-import { Routes, Route } from "react-router-dom";
-import Layout from './Layout'
+import React, { FC } from 'react';
+import { Routes, Route } from 'react-router-dom';
+import Characters from './pages/Characters';
+import Series from './pages/Series';
+import Comics from './pages/Comics';
+import Layout from './Layout';
+import './index.css';
 
-function App() {
-
+const App: FC = () => {
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<Characters />} />
         <Route path="comics" element={<Comics />} />
         <Route path="series" element={<Series />} />
-        {/* <Route path="*" element={<NoMatch />} /> */}
       </Route>
     </Routes>
-  )
-}
+  );
+};
 
-export default App
+export default App;
