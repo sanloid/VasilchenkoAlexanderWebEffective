@@ -3,8 +3,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer components {
-    .active {
-        @apply border-b-2;
-    }
+.active {
+    border-bottom: 2px solid white;
 }
