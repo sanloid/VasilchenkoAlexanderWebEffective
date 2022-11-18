@@ -1,13 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { CardPropType } from 'types/Card';
+import { MoreDetailPropType } from 'types/MoreDetail';
 import { v4 } from 'uuid';
-
-export interface MoreDetailPropType {
-  title: string;
-  content: CardPropType[];
-  path: string;
-}
 
 const MoreDetail: React.FC<MoreDetailPropType> = ({ title, content, path }) => {
   return (
