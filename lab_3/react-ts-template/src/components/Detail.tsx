@@ -1,7 +1,27 @@
+import { CharactersArr } from 'pages/Characters/Characters';
+import { comicsArr } from 'pages/Comics/Comics';
+import { seriesArr } from 'pages/Series/Series';
 import React from 'react';
-import { CardPropType } from 'types/Card';
+import { DetailPropType } from 'types/Detail';
+import MoreDetail from './MoreDetail';
 
-const Detail: React.FC<CardPropType> = ({ id, name, desc, img }) => {
+const Detail: React.FC<DetailPropType> = ({
+  name,
+  desc,
+  img,
+  comics,
+  series,
+  characters
+}) => {
+  const getComicsById = (id: string[]) => {
+    return comicsArr.filter((e) => id.includes(e.id));
+  };
+  const getSeriesById = (id: string[]) => {
+    return seriesArr.filter((e) => id.includes(e.id));
+  };
+  const getCharactersById = (id: string[]) => {
+    return CharactersArr.filter((e) => id.includes(e.id));
+  };
   return (
     <>
       <section className="text-gray-600 body-font">
@@ -35,6 +55,33 @@ const Detail: React.FC<CardPropType> = ({ id, name, desc, img }) => {
           </div>
         </div>
       </section>
+      {comics ? (
+        <MoreDetail
+          title="In comics"
+          content={getComicsById(comics)}
+          path="/comics/"
+        />
+      ) : (
+        <></>
+      )}
+      {series ? (
+        <MoreDetail
+          title="In series"
+          content={getSeriesById(series)}
+          path="/series/"
+        />
+      ) : (
+        <></>
+      )}
+      {characters ? (
+        <MoreDetail
+          title="Characters"
+          content={getCharactersById(characters)}
+          path="/characters/"
+        />
+      ) : (
+        <></>
+      )}
     </>
   );
 };
