@@ -7,27 +7,32 @@ const Characters: React.FC = () => {
     {
       name: 'DOCTOR STRANGE',
       desc: 'Possessing vast magical knowledge and skills to call upon, he now serves as Earth’s newest Master of the Mystic Arts.',
-      img: 'https://i.annihil.us/u/prod/marvel/i/mg/9/f0/57fe4ef408a29/standard_incredible.jpg'
+      img: 'https://i.annihil.us/u/prod/marvel/i/mg/9/f0/57fe4ef408a29/standard_incredible.jpg',
+      id: '1'
     },
     {
       name: 'DOCTOR STRANGE',
       desc: 'Possessing vast magical knowledge and skills to call upon, he now serves as Earth’s newest Master of the Mystic Arts.',
-      img: 'https://i.annihil.us/u/prod/marvel/i/mg/9/f0/57fe4ef408a29/standard_incredible.jpg'
+      img: 'https://i.annihil.us/u/prod/marvel/i/mg/9/f0/57fe4ef408a29/standard_incredible.jpg',
+      id: '2'
     },
     {
       name: 'DOCTOR STRANGE',
       desc: 'Possessing vast magical knowledge and skills to call upon, he now serves as Earth’s newest Master of the Mystic Arts.',
-      img: 'https://i.annihil.us/u/prod/marvel/i/mg/9/f0/57fe4ef408a29/standard_incredible.jpg'
+      img: 'https://i.annihil.us/u/prod/marvel/i/mg/9/f0/57fe4ef408a29/standard_incredible.jpg',
+      id: '3'
     },
     {
       name: 'DOCTOR STRANGE',
       desc: 'Possessing vast magical knowledge and skills to call upon, he now serves as Earth’s newest Master of the Mystic Arts.',
-      img: 'https://i.annihil.us/u/prod/marvel/i/mg/9/f0/57fe4ef408a29/standard_incredible.jpg'
+      img: 'https://i.annihil.us/u/prod/marvel/i/mg/9/f0/57fe4ef408a29/standard_incredible.jpg',
+      id: '4'
     },
     {
       name: 'DOCTOR STRANGE',
       desc: 'Possessing vast magical knowledge and skills to call upon, he now serves as Earth’s newest Master of the Mystic Arts.',
-      img: 'https://i.annihil.us/u/prod/marvel/i/mg/9/f0/57fe4ef408a29/standard_incredible.jpg'
+      img: 'https://i.annihil.us/u/prod/marvel/i/mg/9/f0/57fe4ef408a29/standard_incredible.jpg',
+      id: '5'
     }
   ];
   return (
@@ -37,7 +42,7 @@ const Characters: React.FC = () => {
         <div className="container px-5 py-24 mx-auto">
           <div className="flex flex-wrap sm:-m-4 -mx-4 -mb-10 -mt-4">
             {CharactersArr.map((e) => (
-              <Card name={e.name} desc={e.desc} img={e.img} />
+              <Card name={e.name} desc={e.desc} img={e.img} id={e.id} />
             ))}
           </div>
         </div>
