@@ -1,6 +1,7 @@
 import React from 'react';
-import Card from '../components/Card';
-import SearchForm from '../components/SearchForm';
+import { v4 } from 'uuid';
+import Card from '../../components/Card';
+import SearchForm from '../../components/SearchForm';
 
 const Characters: React.FC = () => {
   const CharactersArr = [
@@ -8,31 +9,31 @@ const Characters: React.FC = () => {
       name: 'DOCTOR STRANGE',
       desc: 'Possessing vast magical knowledge and skills to call upon, he now serves as Earth’s newest Master of the Mystic Arts.',
       img: 'https://i.annihil.us/u/prod/marvel/i/mg/9/f0/57fe4ef408a29/standard_incredible.jpg',
-      id: '1'
+      id: v4()
     },
     {
       name: 'DOCTOR STRANGE',
       desc: 'Possessing vast magical knowledge and skills to call upon, he now serves as Earth’s newest Master of the Mystic Arts.',
       img: 'https://i.annihil.us/u/prod/marvel/i/mg/9/f0/57fe4ef408a29/standard_incredible.jpg',
-      id: '2'
+      id: v4()
     },
     {
       name: 'DOCTOR STRANGE',
       desc: 'Possessing vast magical knowledge and skills to call upon, he now serves as Earth’s newest Master of the Mystic Arts.',
       img: 'https://i.annihil.us/u/prod/marvel/i/mg/9/f0/57fe4ef408a29/standard_incredible.jpg',
-      id: '3'
+      id: v4()
     },
     {
       name: 'DOCTOR STRANGE',
       desc: 'Possessing vast magical knowledge and skills to call upon, he now serves as Earth’s newest Master of the Mystic Arts.',
       img: 'https://i.annihil.us/u/prod/marvel/i/mg/9/f0/57fe4ef408a29/standard_incredible.jpg',
-      id: '4'
+      id: v4()
     },
     {
       name: 'DOCTOR STRANGE',
       desc: 'Possessing vast magical knowledge and skills to call upon, he now serves as Earth’s newest Master of the Mystic Arts.',
       img: 'https://i.annihil.us/u/prod/marvel/i/mg/9/f0/57fe4ef408a29/standard_incredible.jpg',
-      id: '5'
+      id: v4()
     }
   ];
   return (
