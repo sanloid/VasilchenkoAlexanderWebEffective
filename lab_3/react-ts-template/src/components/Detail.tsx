@@ -1,6 +1,6 @@
-import { CharactersArr } from 'pages/Characters/Characters';
-import { comicsArr } from 'pages/Comics/Comics';
-import { seriesArr } from 'pages/Series/Series';
+import { CharactersArr } from 'data/CharactersArray';
+import { ComicsArr } from 'data/ComicsArray';
+import { SeriesArr } from 'data/SeriesArray';
 import React from 'react';
 import { DetailPropType } from 'types/Detail';
 import MoreDetail from './MoreDetail';
@@ -14,10 +14,10 @@ const Detail: React.FC<DetailPropType> = ({
   characters
 }) => {
   const getComicsById = (id: string[]) => {
-    return comicsArr.filter((e) => id.includes(e.id));
+    return ComicsArr.filter((e) => id.includes(e.id));
   };
   const getSeriesById = (id: string[]) => {
-    return seriesArr.filter((e) => id.includes(e.id));
+    return SeriesArr.filter((e) => id.includes(e.id));
   };
   const getCharactersById = (id: string[]) => {
     return CharactersArr.filter((e) => id.includes(e.id));
