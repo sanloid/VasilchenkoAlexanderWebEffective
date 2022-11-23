@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import { v4 } from 'uuid';
 
 const Header: React.FC = () => {
   const [mode, setMode] = useState(false);
@@ -12,7 +13,7 @@ const Header: React.FC = () => {
     setMode(!mode);
   };
   const linksArr = [
-    { name: 'Characters', path: '/' },
+    { name: 'Characters', path: 'characters' },
     { name: 'Comics', path: 'comics' },
     { name: 'Series', path: 'series' }
   ];
@@ -20,11 +21,12 @@ const Header: React.FC = () => {
     <header className="text-gray-600 font-marvel bg-red-acid dark:bg-gray-500">
       <div className="container mx-auto flex flex-wrap p-2 flex-col md:flex-row items-center">
         <div className="flex items-center h-10">
-          <img src="./marvel_logo.svg" className="w-full h-full" alt="" />
+          <img src="/marvel_logo.svg" className="w-full h-full" alt="" />
         </div>
         <nav className="md:ml-auto flex flex-wrap items-center text-base justify-center">
           {linksArr.map((e) => (
             <NavLink
+              key={v4()}
               to={e.path}
               className="cursor-pointer text-white text-xl hover:rounded-xl hover:bg-white p-5 mr-5 hover:text-black"
             >
