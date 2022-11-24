@@ -1,6 +1,6 @@
 import React from 'react';
-import Detail from 'components/Detail';
 import { useParams } from 'react-router-dom';
+import Detail from 'components/Detail';
 import { CharactersArr } from 'data/CharactersArray';
 
 const CharactersDetails: React.FC = () => {

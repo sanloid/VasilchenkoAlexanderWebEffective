@@ -1,6 +1,6 @@
-import { ComicsArr } from 'data/ComicsArray';
 import React from 'react';
 import { v4 } from 'uuid';
+import { ComicsArr } from 'data/ComicsArray';
 import Card from '../../components/Card';
 import SearchForm from '../../components/SearchForm';
 

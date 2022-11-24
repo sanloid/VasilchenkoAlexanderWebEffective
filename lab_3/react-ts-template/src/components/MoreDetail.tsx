@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { MoreDetailPropType } from 'types/MoreDetail';
 import { v4 } from 'uuid';
+import { MoreDetailPropType } from 'types/MoreDetail';
 
 const MoreDetail: React.FC<MoreDetailPropType> = ({ title, content, path }) => {
   return (

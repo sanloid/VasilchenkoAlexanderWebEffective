@@ -1,7 +1,7 @@
+import React from 'react';
 import { CharactersArr } from 'data/CharactersArray';
 import { ComicsArr } from 'data/ComicsArray';
 import { SeriesArr } from 'data/SeriesArray';
-import React from 'react';
 import { DetailPropType } from 'types/Detail';
 import MoreDetail from './MoreDetail';
 
