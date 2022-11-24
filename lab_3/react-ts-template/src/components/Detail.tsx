@@ -61,27 +61,21 @@ const Detail: React.FC<DetailPropType> = ({
           content={getComicsById(comics)}
           path="/comics/"
         />
-      ) : (
-        <></>
-      )}
+      ) : null}
       {series ? (
         <MoreDetail
           title="In series"
           content={getSeriesById(series)}
           path="/series/"
         />
-      ) : (
-        <></>
-      )}
+      ) : null}
       {characters ? (
         <MoreDetail
           title="Characters"
           content={getCharactersById(characters)}
           path="/characters/"
         />
-      ) : (
-        <></>
-      )}
+      ) : null}
     </>
   );
 };
