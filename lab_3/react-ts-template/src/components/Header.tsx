@@ -13,9 +13,9 @@ const Header: React.FC = () => {
     setMode(!mode);
   };
   const linksArr = [
-    { name: 'Characters', path: 'characters' },
-    { name: 'Comics', path: 'comics' },
-    { name: 'Series', path: 'series' }
+    { name: 'Characters', path: 'characters/page/1' },
+    { name: 'Comics', path: 'comics/page/1' },
+    { name: 'Series', path: 'series/page/1' }
   ];
   return (
     <header className="text-gray-600 font-marvel bg-red-acid dark:bg-gray-500">
