@@ -16,6 +16,11 @@ const App: FC = () => {
         <Route path="characters" element={<Characters />} />
         <Route path="comics" element={<Comics />} />
         <Route path="series" element={<Series />} />
+
+        <Route path="characters/page/:page" element={<Characters />} />
+        <Route path="comics/page/:page" element={<Comics />} />
+        <Route path="series/page/:page" element={<Series />} />
+
         <Route path="characters/:id" element={<CharactersDetails />} />
         <Route path="comics/:id" element={<ComicsDetails />} />
         <Route path="series/:id" element={<SeriesDetails />} />
