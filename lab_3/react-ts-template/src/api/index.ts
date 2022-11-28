@@ -1,5 +1,9 @@
-import posts from 'api/posts';
+import chars from 'api/chars';
+import comics from 'api/comics';
+import series from './series';
 
 export default {
-  posts
+  chars,
+  comics,
+  series
 };
