@@ -21,12 +21,30 @@ export default {
   },
   async getSeries(id: string): Promise<SeriesResponse> {
     const ts = Date.now();
-    const response = await axios.get(`/series/`.concat(id), {
+    const response = await axios.get(`/series/${id}`, {
       params: {
         apikey: environments.apiKey,
         hash: Md5.hashStr(ts + environments.privateKey + environments.apiKey),
         ts,
         limit: 1
+      }
+    });
+    return response.data;
+  },
+  async searchByName(
+    name: string,
+    limit: number,
+    page: number
+  ): Promise<SeriesResponse> {
+    const ts = Date.now();
+    const response = await axios.get(`/series`, {
+      params: {
+        apikey: environments.apiKey,
+        hash: Md5.hashStr(ts + environments.privateKey + environments.apiKey),
+        titleStartsWith: name,
+        offset: (page - 1) * limit,
+        limit,
+        ts
       }
     });
     return response.data;

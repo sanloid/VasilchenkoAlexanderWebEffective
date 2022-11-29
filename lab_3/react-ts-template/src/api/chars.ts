@@ -30,5 +30,23 @@ export default {
       }
     });
     return response.data;
+  },
+  async searchByName(
+    name: string,
+    limit: number,
+    page: number
+  ): Promise<CharResponse> {
+    const ts = Date.now();
+    const response = await axios.get(`/characters`, {
+      params: {
+        apikey: environments.apiKey,
+        hash: Md5.hashStr(ts + environments.privateKey + environments.apiKey),
+        nameStartsWith: name,
+        offset: (page - 1) * limit,
+        limit,
+        ts
+      }
+    });
+    return response.data;
   }
 };
