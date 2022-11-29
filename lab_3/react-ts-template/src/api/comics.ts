@@ -4,6 +4,7 @@ import { Md5 } from 'ts-md5';
 
 // Types
 import { ComicsResponse } from 'types/api/Comics/ComicsResponse';
+import { ComicsCharacterResponse } from 'types/api/Comics/ComicsCharacterResponse';
 
 export default {
   async getComicsList(page: number, limit: number): Promise<ComicsResponse> {
@@ -31,7 +32,6 @@ export default {
     });
     return response.data;
   },
-
   async searchByName(
     name: string,
     limit: number,
@@ -45,6 +45,17 @@ export default {
         titleStartsWith: name,
         offset: (page - 1) * limit,
         limit,
+        ts
+      }
+    });
+    return response.data;
+  },
+  async comicsChar(id: string): Promise<ComicsCharacterResponse> {
+    const ts = Date.now();
+    const response = await axios.get(`/comics/${id}/characters`, {
+      params: {
+        apikey: environments.apiKey,
+        hash: Md5.hashStr(ts + environments.privateKey + environments.apiKey),
         ts
       }
     });
