@@ -4,7 +4,7 @@ import { observable, action, runInAction, makeAutoObservable } from 'mobx';
 import api from 'api';
 
 // Types
-import { ComicsResponse } from 'types/api/ComicsResponse';
+import { ComicsResponse } from 'types/api/Comics/ComicsResponse';
 
 class ComicsStore {
   @observable

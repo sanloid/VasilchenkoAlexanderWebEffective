@@ -4,7 +4,7 @@ import { observable, action, runInAction, makeAutoObservable } from 'mobx';
 import api from 'api';
 
 // Types
-import { CharResponse } from 'types/api/CharResponse';
+import { CharResponse } from 'types/api/Characters/CharResponse';
 
 class CharStore {
   @observable

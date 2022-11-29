@@ -3,7 +3,7 @@ import environments from 'config/environments';
 import { Md5 } from 'ts-md5';
 
 // Types
-import { SeriesResponse } from 'types/api/SeriesResponse';
+import { SeriesResponse } from 'types/api/Series/SeriesResponse';
 
 export default {
   async getSeriesList(page: number, limit: number): Promise<SeriesResponse> {

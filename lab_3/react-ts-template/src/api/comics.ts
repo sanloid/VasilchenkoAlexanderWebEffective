@@ -3,7 +3,7 @@ import environments from 'config/environments';
 import { Md5 } from 'ts-md5';
 
 // Types
-import { ComicsResponse } from 'types/api/ComicsResponse';
+import { ComicsResponse } from 'types/api/Comics/ComicsResponse';
 
 export default {
   async getComicsList(page: number, limit: number): Promise<ComicsResponse> {

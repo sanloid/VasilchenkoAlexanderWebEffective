@@ -2,7 +2,7 @@ import { observable, action, runInAction, makeAutoObservable } from 'mobx';
 
 // API
 import api from 'api';
-import { SeriesResponse } from 'types/api/SeriesResponse';
+import { SeriesResponse } from 'types/api/Series/SeriesResponse';
 
 // Types
 

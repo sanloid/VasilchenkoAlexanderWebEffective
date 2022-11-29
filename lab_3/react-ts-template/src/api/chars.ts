@@ -3,7 +3,7 @@ import environments from 'config/environments';
 import { Md5 } from 'ts-md5';
 
 // Types
-import { CharResponse } from 'types/api/CharResponse';
+import { CharResponse } from 'types/api/Characters/CharResponse';
 
 export default {
   async getCharList(page: number, limit: number): Promise<CharResponse> {
