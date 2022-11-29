@@ -9,17 +9,17 @@ const ComicsDetails: React.FC = observer(() => {
   const { id } = useParams();
   useEffect(() => {
     if (id) store.ComicsStore.getComics(id);
+    window.scrollTo(0, 0);
   }, []);
 
   return store.ComicsStore.loadingOne ? (
     <LoadingSpinner />
   ) : (
     <Detail
-      name={store.ComicsStore.oneComicsResponse.data.results[0].title}
-      description={
-        store.ComicsStore.oneComicsResponse.data.results[0].description
-      }
-      img={store.ComicsStore.oneComicsResponse.data.results[0].thumbnail}
+      name={store.ComicsStore.oneResponse.data.results[0].title}
+      description={store.ComicsStore.oneResponse.data.results[0].description}
+      img={store.ComicsStore.oneResponse.data.results[0].thumbnail}
+      characters={store.ComicsStore.comicsChar}
     />
   );
 });

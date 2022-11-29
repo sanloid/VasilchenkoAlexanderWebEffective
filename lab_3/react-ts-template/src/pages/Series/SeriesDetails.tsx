@@ -8,18 +8,19 @@ import LoadingSpinner from 'components/LoadingSpinner';
 const SeriesDetails: React.FC = observer(() => {
   const { id } = useParams();
   useEffect(() => {
-    if (id) store.SeriesStore.getSeries(id);
+    if (id) store.SeriesStore.getOne(id);
+    window.scrollTo(0, 0);
   }, []);
 
   return store.SeriesStore.loadingOne ? (
     <LoadingSpinner />
   ) : (
     <Detail
-      name={store.SeriesStore.oneSeriesResponse.data.results[0].title}
-      description={
-        store.SeriesStore.oneSeriesResponse.data.results[0].description
-      }
-      img={store.SeriesStore.oneSeriesResponse.data.results[0].thumbnail}
+      name={store.SeriesStore.oneResponse.data.results[0].title}
+      description={store.SeriesStore.oneResponse.data.results[0].description}
+      img={store.SeriesStore.oneResponse.data.results[0].thumbnail}
+      comics={store.SeriesStore.seriesComics}
+      characters={store.SeriesStore.seriesChar}
     />
   );
 });
