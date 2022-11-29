@@ -23,7 +23,7 @@ class ComicsStore {
   pageLimit: number;
 
   @observable
-  comicsOnPage: number = 18;
+  comicsOnPage: number = 6;
 
   constructor() {
     makeAutoObservable(this);
@@ -66,6 +66,30 @@ class ComicsStore {
     } finally {
       runInAction(() => {
         this.loadingOne = false;
+      });
+    }
+  };
+
+  @action
+  searchByName = async (name: string, page: string): Promise<void> => {
+    try {
+      this.loadingList = true;
+
+      const response = await api.comics.searchByName(
+        name,
+        this.comicsOnPage,
+        Number(page)
+      );
+
+      runInAction(() => {
+        this.comicsResponse = response;
+        this.pageLimit = Math.ceil(response.data.total / this.comicsOnPage);
+      });
+    } catch (error) {
+      console.error(error);
+    } finally {
+      runInAction(() => {
+        this.loadingList = false;
       });
     }
   };

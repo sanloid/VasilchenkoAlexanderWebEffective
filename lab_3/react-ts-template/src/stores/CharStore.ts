@@ -17,7 +17,7 @@ class CharStore {
   pageLimit: number;
 
   @observable
-  charsOnPage: number = 18;
+  charsOnPage: number = 6;
 
   @observable
   loadingList: boolean = false;
@@ -68,6 +68,30 @@ class CharStore {
     } finally {
       runInAction(() => {
         this.loadingOne = false;
+      });
+    }
+  };
+
+  @action
+  searchByName = async (name: string, page: string): Promise<void> => {
+    try {
+      this.loadingList = true;
+
+      const response = await api.chars.searchByName(
+        name,
+        this.charsOnPage,
+        Number(page)
+      );
+
+      runInAction(() => {
+        this.charResponse = response;
+        this.pageLimit = Math.ceil(response.data.total / this.charsOnPage);
+      });
+    } catch (error) {
+      console.error(error);
+    } finally {
+      runInAction(() => {
+        this.loadingList = false;
       });
     }
   };
