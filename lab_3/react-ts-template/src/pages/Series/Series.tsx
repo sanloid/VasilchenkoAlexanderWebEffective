@@ -6,14 +6,23 @@ import store from 'stores/index';
 import Card from 'components/Card';
 import SearchForm from 'components/SearchForm';
 import Pagination from 'components/Pagination';
-import { useParams } from 'react-router-dom';
+import { useParams, useSearchParams } from 'react-router-dom';
 
 const Series: React.FC = observer(() => {
   const { page } = useParams();
+  const [search] = useSearchParams();
+  const name = search.get('name');
 
   useEffect(() => {
-    if (page) store.SeriesStore.getSeriesList(page);
-  }, [page]);
+    if (page) {
+      if (name) {
+        store.SeriesStore.searchByName(name, page);
+      } else {
+        store.SeriesStore.getSeriesList(page);
+      }
+    }
+    window.scrollTo(0, 0);
+  }, [page, name]);
 
   return (
     <>

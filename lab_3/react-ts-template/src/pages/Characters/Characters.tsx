@@ -6,14 +6,23 @@ import LoadingSpinner from 'components/LoadingSpinner';
 import Card from 'components/Card';
 import SearchForm from 'components/SearchForm';
 import Pagination from 'components/Pagination';
-import { useParams } from 'react-router-dom';
+import { useParams, useSearchParams } from 'react-router-dom';
 
 const Characters: React.FC = observer(() => {
   const { page } = useParams();
+  const [search] = useSearchParams();
+  const name = search.get('name');
 
   useEffect(() => {
-    if (page) store.CharStore.getCharList(page);
-  }, [page]);
+    if (page) {
+      if (name) {
+        store.CharStore.searchByName(name, page);
+      } else {
+        store.CharStore.getCharList(page);
+      }
+    }
+    window.scrollTo(0, 0);
+  }, [page, search]);
 
   return (
     <>

@@ -1,8 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const SearchForm: React.FC = () => {
+  const [name, setName] = useState('');
+  const navigate = useNavigate();
+  const loc = useLocation().pathname.split('/');
+  loc[loc.indexOf('page') + 1] = '1';
+  const path = '..'.concat(loc.join('/'));
+
   return (
-    <form className="mt-10 px-5 font-marvel container mx-auto">
+    <form
+      className="mt-10 px-5 font-marvel container mx-auto"
+      onSubmit={(e) => {
+        e.preventDefault();
+        navigate({
+          pathname: path,
+          search: `?name=${name}`
+        });
+      }}
+    >
       <div className="relative">
         <div className="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
           <svg
@@ -23,6 +39,8 @@ const SearchForm: React.FC = () => {
         </div>
         <input
           type="search"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
           id="default-search"
           className="block p-4 pl-10 w-full text-black bg-gray-50 rounded-lg border border-gray-300 focus:ring-red-500 dark:focus:ring-gray-500 focus:border-red-500 dark:focus:border-gray-500 focus:outline-none"
           placeholder="Search comics, series..."

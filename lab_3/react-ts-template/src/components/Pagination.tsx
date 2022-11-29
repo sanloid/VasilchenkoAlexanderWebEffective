@@ -1,5 +1,10 @@
 import React from 'react';
-import { Link, NavLink, useLocation, useParams } from 'react-router-dom';
+import {
+  useLocation,
+  useNavigate,
+  useParams,
+  useSearchParams
+} from 'react-router-dom';
 import { v4 } from 'uuid';
 
 export interface PaginationPropType {
@@ -7,14 +12,21 @@ export interface PaginationPropType {
 }
 
 const Pagination: React.FC<PaginationPropType> = ({ max }) => {
-  const pagesToShow = 7;
+  const navigate = useNavigate();
+  const [searchParam] = useSearchParams();
+  const name = searchParam.get('name');
+  const parent = useLocation().pathname.split('/')[1];
+  const search = name ? `name=${name}` : '';
+
+  const pagesToShow = 5;
   const { page } = useParams();
   const current = Number(page);
-  const parentPath = useLocation().pathname.split('/')[1];
-  const min = 0;
   const interval = { start: 0, end: 0 };
-  if (current - pagesToShow / 2 <= 0) {
-    interval.start = min;
+  if (max <= pagesToShow) {
+    interval.start = 0;
+    interval.end = pagesToShow;
+  } else if (current - pagesToShow / 2 <= 0) {
+    interval.start = 0;
     interval.end = pagesToShow;
   } else if (current + pagesToShow / 2 >= max) {
     interval.start = max - pagesToShow;
@@ -36,8 +48,16 @@ const Pagination: React.FC<PaginationPropType> = ({ max }) => {
       <nav>
         <ul className="inline-flex items-center -space-x-px">
           <li>
-            <Link
-              to={`../${parentPath}/page/${current - 1}`}
+            <button
+              type="button"
+              onClick={() => {
+                navigate({
+                  pathname: `/${parent}/page/${
+                    Number(page) - 1 <= 1 ? 1 : Number(page) - 1
+                  }`,
+                  search
+                });
+              }}
               className="cursor-pointer block px-3 py-2 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
             >
               <span className="sr-only">Previous</span>
@@ -54,25 +74,39 @@ const Pagination: React.FC<PaginationPropType> = ({ max }) => {
                   clipRule="evenodd"
                 />
               </svg>
-            </Link>
+            </button>
           </li>
 
           {pages.map((e) => {
             return (
               <li key={v4()}>
-                <Link
+                <button
+                  onClick={() => {
+                    navigate({
+                      pathname: `/${parent}/page/${e}`,
+                      search
+                    });
+                  }}
+                  type="button"
                   className={e === current ? activeStyle : notActiveStyle}
-                  to={`../${parentPath}/page/${e}`}
                 >
                   {e}
-                </Link>
+                </button>
               </li>
             );
           })}
 
           <li>
-            <Link
-              to={`../${parentPath}/page/${current + 1}`}
+            <button
+              type="button"
+              onClick={() => {
+                navigate({
+                  pathname: `/${parent}/page/${
+                    Number(page) + 1 >= max ? max : Number(page) + 1
+                  }`,
+                  search
+                });
+              }}
               className="cursor-pointer block px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
             >
               <span className="sr-only">Next</span>
@@ -89,7 +123,7 @@ const Pagination: React.FC<PaginationPropType> = ({ max }) => {
                   clipRule="evenodd"
                 />
               </svg>
-            </Link>
+            </button>
           </li>
         </ul>
       </nav>
