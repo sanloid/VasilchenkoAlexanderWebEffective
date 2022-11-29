@@ -5,19 +5,21 @@ import api from 'api';
 
 // Types
 import { CharResponse } from 'types/api/Characters/CharResponse';
+import { CharComicsResponse } from 'types/api/Characters/CharComicsResponse';
+import { CharSeriesResponse } from 'types/api/Characters/CharSeriesResponse';
 
 class CharStore {
   @observable
-  charResponse: CharResponse;
+  Response: CharResponse;
 
   @observable
-  oneCharResponse: CharResponse;
+  oneResponse: CharResponse;
 
   @observable
   pageLimit: number;
 
   @observable
-  charsOnPage: number = 6;
+  OnPage: number = 6;
 
   @observable
   loadingList: boolean = false;
@@ -25,23 +27,26 @@ class CharStore {
   @observable
   loadingOne: boolean = true;
 
+  @observable
+  charComics: CharComicsResponse;
+
+  @observable
+  charSeries: CharSeriesResponse;
+
   constructor() {
     makeAutoObservable(this);
   }
 
   @action
-  getCharList = async (page: string): Promise<void> => {
+  getList = async (page: string): Promise<void> => {
     try {
       this.loadingList = true;
 
-      const response = await api.chars.getCharList(
-        Number(page),
-        this.charsOnPage
-      );
+      const response = await api.chars.getCharList(Number(page), this.OnPage);
 
       runInAction(() => {
-        this.charResponse = response;
-        this.pageLimit = Math.ceil(response.data.total / this.charsOnPage);
+        this.Response = response;
+        this.pageLimit = Math.ceil(response.data.total / this.OnPage);
       });
     } catch (error) {
       console.error(error);
@@ -53,15 +58,19 @@ class CharStore {
   };
 
   @action
-  getChar = async (id: string): Promise<void> => {
+  getOne = async (id: string): Promise<void> => {
     try {
       runInAction(() => {
         this.loadingOne = true;
       });
       const response = await api.chars.getChar(id);
+      const comics = await api.chars.charComics(id);
+      const series = await api.chars.charSeries(id);
 
       runInAction(() => {
-        this.oneCharResponse = response;
+        this.oneResponse = response;
+        this.charComics = comics;
+        this.charSeries = series;
       });
     } catch (error) {
       console.error(error);
@@ -79,13 +88,13 @@ class CharStore {
 
       const response = await api.chars.searchByName(
         name,
-        this.charsOnPage,
+        this.OnPage,
         Number(page)
       );
 
       runInAction(() => {
-        this.charResponse = response;
-        this.pageLimit = Math.ceil(response.data.total / this.charsOnPage);
+        this.Response = response;
+        this.pageLimit = Math.ceil(response.data.total / this.OnPage);
       });
     } catch (error) {
       console.error(error);

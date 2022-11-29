@@ -5,13 +5,14 @@ import api from 'api';
 
 // Types
 import { ComicsResponse } from 'types/api/Comics/ComicsResponse';
+import { ComicsCharacterResponse } from 'types/api/Comics/ComicsCharacterResponse';
 
 class ComicsStore {
   @observable
-  comicsResponse: ComicsResponse;
+  Response: ComicsResponse;
 
   @observable
-  oneComicsResponse: ComicsResponse;
+  oneResponse: ComicsResponse;
 
   @observable
   loadingList: boolean = false;
@@ -23,25 +24,28 @@ class ComicsStore {
   pageLimit: number;
 
   @observable
-  comicsOnPage: number = 6;
+  OnPage: number = 6;
+
+  @observable
+  comicsChar: ComicsCharacterResponse;
 
   constructor() {
     makeAutoObservable(this);
   }
 
   @action
-  getComicsList = async (page: string): Promise<void> => {
+  getList = async (page: string): Promise<void> => {
     try {
       this.loadingList = true;
 
       const response = await api.comics.getComicsList(
         Number(page),
-        this.comicsOnPage
+        this.OnPage
       );
 
       runInAction(() => {
-        this.comicsResponse = response;
-        this.pageLimit = Math.ceil(response.data.total / this.comicsOnPage);
+        this.Response = response;
+        this.pageLimit = Math.ceil(response.data.total / this.OnPage);
       });
     } catch (error) {
       console.error(error);
@@ -57,9 +61,11 @@ class ComicsStore {
     try {
       this.loadingOne = true;
       const response = await api.comics.getComics(id);
+      const char = await api.comics.comicsChar(id);
 
       runInAction(() => {
-        this.oneComicsResponse = response;
+        this.oneResponse = response;
+        this.comicsChar = char;
       });
     } catch (error) {
       console.error(error);
@@ -77,13 +83,13 @@ class ComicsStore {
 
       const response = await api.comics.searchByName(
         name,
-        this.comicsOnPage,
+        this.OnPage,
         Number(page)
       );
 
       runInAction(() => {
-        this.comicsResponse = response;
-        this.pageLimit = Math.ceil(response.data.total / this.comicsOnPage);
+        this.Response = response;
+        this.pageLimit = Math.ceil(response.data.total / this.OnPage);
       });
     } catch (error) {
       console.error(error);

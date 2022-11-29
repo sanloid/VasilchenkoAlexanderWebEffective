@@ -18,7 +18,7 @@ const Characters: React.FC = observer(() => {
       if (name) {
         store.CharStore.searchByName(name, page);
       } else {
-        store.CharStore.getCharList(page);
+        store.CharStore.getList(page);
       }
     }
     window.scrollTo(0, 0);
@@ -33,7 +33,7 @@ const Characters: React.FC = observer(() => {
             {store.CharStore.loadingList ? (
               <LoadingSpinner />
             ) : (
-              store.CharStore.charResponse?.data.results.map((e) => (
+              store.CharStore.Response?.data.results.map((e) => (
                 <Card
                   name={e.name}
                   description={e.description}

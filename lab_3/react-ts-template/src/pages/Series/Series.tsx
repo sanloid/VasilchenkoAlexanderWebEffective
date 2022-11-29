@@ -18,7 +18,7 @@ const Series: React.FC = observer(() => {
       if (name) {
         store.SeriesStore.searchByName(name, page);
       } else {
-        store.SeriesStore.getSeriesList(page);
+        store.SeriesStore.getList(page);
       }
     }
     window.scrollTo(0, 0);
@@ -33,7 +33,7 @@ const Series: React.FC = observer(() => {
             {store.SeriesStore.loadingList ? (
               <LoadingSpinner />
             ) : (
-              store.SeriesStore.seriesResponse?.data.results.map((e) => (
+              store.SeriesStore.Response?.data.results.map((e) => (
                 <Card
                   id={e.id}
                   description={e.description}

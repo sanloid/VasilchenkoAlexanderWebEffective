@@ -18,7 +18,7 @@ const Comics: React.FC = observer(() => {
       if (name) {
         store.ComicsStore.searchByName(name, page);
       } else {
-        store.ComicsStore.getComicsList(page);
+        store.ComicsStore.getList(page);
       }
     }
     window.scrollTo(0, 0);
@@ -33,7 +33,7 @@ const Comics: React.FC = observer(() => {
             {store.ComicsStore.loadingList ? (
               <LoadingSpinner />
             ) : (
-              store.ComicsStore.comicsResponse?.data.results.map((e) => (
+              store.ComicsStore.Response?.data.results.map((e) => (
                 <Card
                   id={e.id}
                   description={e.description}

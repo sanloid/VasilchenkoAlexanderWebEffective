@@ -3,15 +3,17 @@ import { observable, action, runInAction, makeAutoObservable } from 'mobx';
 // API
 import api from 'api';
 import { SeriesResponse } from 'types/api/Series/SeriesResponse';
+import { SeriesCharacterResponse } from 'types/api/Series/SeriesCharacterResponse';
+import { SeriesComicsResponse } from 'types/api/Series/SeriesComicsResponse';
 
 // Types
 
 class SeriesStore {
   @observable
-  seriesResponse: SeriesResponse;
+  Response: SeriesResponse;
 
   @observable
-  oneSeriesResponse: SeriesResponse;
+  oneResponse: SeriesResponse;
 
   @observable
   loadingList: boolean = false;
@@ -23,25 +25,31 @@ class SeriesStore {
   pageLimit: number;
 
   @observable
-  seriesOnPage: number = 6;
+  OnPage: number = 6;
+
+  @observable
+  seriesChar: SeriesCharacterResponse;
+
+  @observable
+  seriesComics: SeriesComicsResponse;
 
   constructor() {
     makeAutoObservable(this);
   }
 
   @action
-  getSeriesList = async (page: string): Promise<void> => {
+  getList = async (page: string): Promise<void> => {
     try {
       this.loadingList = true;
 
       const response = await api.series.getSeriesList(
         Number(page),
-        this.seriesOnPage
+        this.OnPage
       );
 
       runInAction(() => {
-        this.seriesResponse = response;
-        this.pageLimit = Math.ceil(response.data.total / this.seriesOnPage);
+        this.Response = response;
+        this.pageLimit = Math.ceil(response.data.total / this.OnPage);
       });
     } catch (error) {
       console.error(error);
@@ -53,13 +61,17 @@ class SeriesStore {
   };
 
   @action
-  getSeries = async (id: string): Promise<void> => {
+  getOne = async (id: string): Promise<void> => {
     try {
       this.loadingOne = true;
       const response = await api.series.getSeries(id);
+      const chars = await api.series.seriesChar(id);
+      const comics = await api.series.seriesComics(id);
 
       runInAction(() => {
-        this.oneSeriesResponse = response;
+        this.oneResponse = response;
+        this.seriesChar = chars;
+        this.seriesComics = comics;
       });
     } catch (error) {
       console.error(error);
@@ -77,13 +89,13 @@ class SeriesStore {
 
       const response = await api.series.searchByName(
         name,
-        this.seriesOnPage,
+        this.OnPage,
         Number(page)
       );
 
       runInAction(() => {
-        this.seriesResponse = response;
-        this.pageLimit = Math.ceil(response.data.total / this.seriesOnPage);
+        this.Response = response;
+        this.pageLimit = Math.ceil(response.data.total / this.OnPage);
       });
     } catch (error) {
       console.error(error);
