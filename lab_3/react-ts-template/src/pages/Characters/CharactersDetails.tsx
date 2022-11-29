@@ -1,12 +1,25 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import Detail from 'components/Detail';
-import { CharactersArr } from 'data/CharactersArray';
+import store from 'stores/index';
+import { observer } from 'mobx-react-lite';
+import LoadingSpinner from 'components/LoadingSpinner';
 
-const CharactersDetails: React.FC = () => {
+const CharactersDetails: React.FC = observer(() => {
   const { id } = useParams();
+  useEffect(() => {
+    if (id) store.CharStore.getChar(id);
+  }, []);
 
-  return <Detail {...CharactersArr.filter((e) => e.id === id)[0]} />;
-};
+  return store.CharStore.loadingOne ? (
+    <LoadingSpinner />
+  ) : (
+    <Detail
+      name={store.CharStore.oneCharResponse.data.results[0].name}
+      description={store.CharStore.oneCharResponse.data.results[0].description}
+      img={store.CharStore.oneCharResponse.data.results[0].thumbnail}
+    />
+  );
+});
 
 export default CharactersDetails;

@@ -1,12 +1,27 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { observer } from 'mobx-react-lite';
 import Detail from 'components/Detail';
 import { useParams } from 'react-router-dom';
-import { ComicsArr } from 'data/ComicsArray';
+import store from 'stores/index';
+import LoadingSpinner from 'components/LoadingSpinner';
 
-const ComicsDetails: React.FC = () => {
+const ComicsDetails: React.FC = observer(() => {
   const { id } = useParams();
+  useEffect(() => {
+    if (id) store.ComicsStore.getComics(id);
+  }, []);
 
-  return <Detail {...ComicsArr.filter((e) => e.id === id)[0]} />;
-};
+  return store.ComicsStore.loadingOne ? (
+    <LoadingSpinner />
+  ) : (
+    <Detail
+      name={store.ComicsStore.oneComicsResponse.data.results[0].title}
+      description={
+        store.ComicsStore.oneComicsResponse.data.results[0].description
+      }
+      img={store.ComicsStore.oneComicsResponse.data.results[0].thumbnail}
+    />
+  );
+});
 
 export default ComicsDetails;
