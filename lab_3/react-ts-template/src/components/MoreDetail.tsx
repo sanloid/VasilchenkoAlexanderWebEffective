@@ -1,9 +1,24 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { CharComicsResponse } from 'types/api/Characters/CharComicsResponse';
+import { CharSeriesResponse } from 'types/api/Characters/CharSeriesResponse';
+import { ComicsCharacterResponse } from 'types/api/Comics/ComicsCharacterResponse';
+import { SeriesCharacterResponse } from 'types/api/Series/SeriesCharacterResponse';
+import { SeriesComicsResponse } from 'types/api/Series/SeriesComicsResponse';
 import { v4 } from 'uuid';
-import { MoreDetailPropType } from 'types/MoreDetail';
 
-const MoreDetail: React.FC<MoreDetailPropType> = ({ title, content, path }) => {
+export interface MoreDetailPropType {
+  title: string;
+  path: string;
+  content:
+    | SeriesCharacterResponse
+    | ComicsCharacterResponse
+    | SeriesComicsResponse
+    | CharComicsResponse
+    | CharSeriesResponse;
+}
+
+const MoreDetail: React.FC<MoreDetailPropType> = ({ title, path, content }) => {
   return (
     <section className="text-gray-600 body-font">
       <div className="container px-5 py-24 mx-auto">
@@ -17,20 +32,25 @@ const MoreDetail: React.FC<MoreDetailPropType> = ({ title, content, path }) => {
         </div>
         <div className="flex flex-wrap -m-4">
           {content ? (
-            content.map((e) => (
+            content.data.results.map((e) => (
               <div key={v4()} className="xl:w-1/4 md:w-1/2 p-4">
                 <div className="bg-gray-100 p-6 rounded-lg">
                   <img
                     className="h-40 rounded w-full object-cover object-center mb-6"
-                    src={e.img}
+                    src={e.thumbnail.path
+                      .concat('.')
+                      .concat(e.thumbnail.extension)}
                     alt="content"
                   />
                   <h2 className="text-lg text-gray-900 font-medium title-font mb-4">
-                    {e.name}
+                    {(e as SeriesCharacterResponse['data']['results']['0']).name
+                      ? (e as SeriesCharacterResponse['data']['results']['0'])
+                          .name
+                      : (e as CharSeriesResponse['data']['results']['0']).title}
                   </h2>
-                  <p className="leading-relaxed text-base">{e.desc}</p>
+                  <p className="leading-relaxed text-base">{e.description}</p>
                   <NavLink
-                    to={path.concat(e.id)}
+                    to={path.concat(String(e.id))}
                     className="cursor-pointer text-red-600 dark:text-gray-600 border-2 p-2 rounded-xl border-red-600 dark:border-gray-600 hover:bg-red-600 dark:hover:bg-gray-600 hover:text-white dark:hover:text-white inline-flex items-center mt-3"
                   >
                     See More
