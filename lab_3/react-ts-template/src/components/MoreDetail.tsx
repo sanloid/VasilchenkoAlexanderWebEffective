@@ -18,6 +18,9 @@ export interface MoreDetailPropType {
     | CharSeriesResponse;
 }
 
+export type SeriesCharOneResp = SeriesCharacterResponse['data']['results']['0'];
+export type CharSeriesOneResp = CharSeriesResponse['data']['results']['0'];
+
 const MoreDetail: React.FC<MoreDetailPropType> = ({ title, path, content }) => {
   return (
     <section className="text-gray-600 body-font">
@@ -37,20 +40,17 @@ const MoreDetail: React.FC<MoreDetailPropType> = ({ title, path, content }) => {
                 <div className="bg-gray-100 p-6 rounded-lg">
                   <img
                     className="h-40 rounded w-full object-cover object-center mb-6"
-                    src={e.thumbnail.path
-                      .concat('.')
-                      .concat(e.thumbnail.extension)}
+                    src={`${e.thumbnail.path}.${e.thumbnail.extension}`}
                     alt="content"
                   />
                   <h2 className="text-lg text-gray-900 font-medium title-font mb-4">
-                    {(e as SeriesCharacterResponse['data']['results']['0']).name
-                      ? (e as SeriesCharacterResponse['data']['results']['0'])
-                          .name
-                      : (e as CharSeriesResponse['data']['results']['0']).title}
+                    {(e as SeriesCharOneResp).name
+                      ? (e as SeriesCharOneResp).name
+                      : (e as CharSeriesOneResp).title}
                   </h2>
                   <p className="leading-relaxed text-base">{e.description}</p>
                   <NavLink
-                    to={path.concat(String(e.id))}
+                    to={`${path}${e.id}`}
                     className="cursor-pointer text-red-600 dark:text-gray-600 border-2 p-2 rounded-xl border-red-600 dark:border-gray-600 hover:bg-red-600 dark:hover:bg-gray-600 hover:text-white dark:hover:text-white inline-flex items-center mt-3"
                   >
                     See More
