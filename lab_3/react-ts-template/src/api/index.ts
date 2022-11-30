@@ -1,9 +1,5 @@
-import chars from 'api/chars';
-import comics from 'api/comics';
-import series from './series';
+import common from './common';
 
 export default {
-  chars,
-  comics,
-  series
+  common
 };
