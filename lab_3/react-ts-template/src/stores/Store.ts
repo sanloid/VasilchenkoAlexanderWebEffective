@@ -18,6 +18,10 @@ class Store {
 
   content: Map<string, ContentType> = new Map<string, ContentType>();
 
+  apiPath: string = '';
+
+  contentList: string[] = [];
+
   constructor() {
     makeObservable(this, {
       Response: observable,
@@ -33,18 +37,6 @@ class Store {
     });
   }
 
-  getApiPath = action((): string => {
-    return '';
-  });
-
-  queryStartsWith = action((): string => {
-    return '';
-  });
-
-  getContentList = action((): string[] => {
-    return [];
-  });
-
   getList = async (page: string): Promise<void> => {
     try {
       this.loadingList = true;
@@ -52,11 +44,11 @@ class Store {
       const response = await api.common.getList(
         Number(page),
         this.OnPage,
-        this.getApiPath()
+        this.apiPath
+        // this.getApiPath()
       );
 
       runInAction(() => {
-        console.log(response);
         this.Response = response;
         this.pageLimit = Math.ceil(response.data.total / this.OnPage);
       });
@@ -75,16 +67,12 @@ class Store {
         this.loadingOne = true;
       });
 
-      const response = await api.common.getOne(id, this.getApiPath());
+      const response = await api.common.getOne(id, this.apiPath);
 
       runInAction(() => {
-        console.log(response);
         this.oneResponse = response;
-        this.getContentList().forEach(async (e) => {
-          this.content.set(
-            e,
-            await api.common.getContent(id, this.getApiPath(), e)
-          );
+        this.contentList.forEach(async (e) => {
+          this.content.set(e, await api.common.getContent(id, this.apiPath, e));
         });
       });
     } catch (error) {
@@ -104,8 +92,8 @@ class Store {
         name,
         this.OnPage,
         Number(page),
-        this.getApiPath(),
-        this.getApiPath() === 'characters' ? 'name' : 'title'
+        this.apiPath,
+        this.apiPath === 'characters' ? 'name' : 'title'
       );
 
       runInAction(() => {

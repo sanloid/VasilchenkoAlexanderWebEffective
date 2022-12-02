@@ -2,12 +2,8 @@ import { action } from 'mobx';
 import Store from 'stores/Store';
 
 class SeriesStore extends Store {
-  getApiPath = action((): string => {
-    return 'series';
-  });
+  apiPath: string = 'characters';
 
-  getContentList = action((): string[] => {
-    return ['characters', 'comics'];
-  });
+  contentList: string[] = ['characters', 'comics'];
 }
 export default SeriesStore;
