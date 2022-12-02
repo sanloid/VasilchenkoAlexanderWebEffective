@@ -1,19 +1,18 @@
 import Card from 'components/Card';
+import Store from 'stores/Store';
 import ErrorFallback from 'components/ErrorFallback';
 import LoadingSpinner from 'components/LoadingSpinner';
 import Pagination from 'components/Pagination';
 import SearchForm from 'components/SearchForm';
-import { toJS } from 'mobx';
 import { observer } from 'mobx-react-lite';
 import React, { useEffect } from 'react';
 import { useParams, useSearchParams } from 'react-router-dom';
-import { StoresType } from 'stores';
 import { CharResponse } from 'types/api/Characters/CharResponse';
 import { SeriesResponse } from 'types/api/Series/SeriesResponse';
 import { v4 } from 'uuid';
 
 export interface PageBasePropType {
-  store: StoresType;
+  store: Store;
 }
 
 export type CharOneResp = CharResponse['data']['results']['0'];

@@ -22,7 +22,7 @@ class Store {
 
   contentList: string[] = [];
 
-  constructor() {
+  constructor(apiPath: string, contentList: string[]) {
     makeObservable(this, {
       Response: observable,
       oneResponse: observable,
@@ -35,6 +35,8 @@ class Store {
       getOne: action,
       searchByName: action
     });
+    this.apiPath = apiPath;
+    this.contentList = contentList;
   }
 
   getList = async (page: string): Promise<void> => {

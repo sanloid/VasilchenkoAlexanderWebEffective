@@ -1,11 +1,7 @@
-import CharStore from './SubStore/CharStore';
-import ComicsStore from './SubStore/ComicsStore';
-import SeriesStore from './SubStore/SeriesStore';
+import Store from './Store';
 
 export default {
-  CharStore: new CharStore(),
-  ComicsStore: new ComicsStore(),
-  SeriesStore: new SeriesStore()
+  CharStore: new Store('characters', ['comics', 'series']),
+  ComicsStore: new Store('comics', ['characters', 'comics']),
+  SeriesStore: new Store('series', ['characters'])
 };
-
-export type StoresType = CharStore | ComicsStore | SeriesStore;

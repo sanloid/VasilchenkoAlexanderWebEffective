@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
+import Store from 'stores/Store';
 import { observer } from 'mobx-react-lite';
-import { StoresType } from 'stores';
 import { CharOneResp, SeriesOneResp } from 'pages/PageBase';
 import { useParams } from 'react-router-dom';
 import { v4 } from 'uuid';
@@ -9,7 +9,7 @@ import ErrorFallback from 'components/ErrorFallback';
 import LoadingSpinner from '../components/LoadingSpinner';
 
 export interface DetailPropType {
-  store: StoresType;
+  store: Store;
 }
 
 const Detail: React.FC<DetailPropType> = observer(({ store }) => {
