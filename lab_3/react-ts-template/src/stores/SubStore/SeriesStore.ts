@@ -2,7 +2,7 @@ import { action } from 'mobx';
 import Store from 'stores/Store';
 
 class SeriesStore extends Store {
-  apiPath: string = 'characters';
+  apiPath: string = 'series';
 
   contentList: string[] = ['characters', 'comics'];
 }
