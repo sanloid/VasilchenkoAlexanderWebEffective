@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import Store from 'stores/Store';
 import { observer } from 'mobx-react-lite';
 import { CharOneResp, SeriesOneResp } from 'pages/PageBase';
-import { useParams } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import { v4 } from 'uuid';
 import MoreDetail from 'components/MoreDetail';
 import ErrorFallback from 'components/ErrorFallback';
@@ -14,10 +14,11 @@ export interface DetailPropType {
 
 const Detail: React.FC<DetailPropType> = observer(({ store }) => {
   const { id } = useParams();
+  const location = useLocation().pathname.split('/')[1];
   useEffect(() => {
     if (id) store.getOne(id);
     window.scrollTo(0, 0);
-  }, []);
+  }, [location]);
 
   if (store.loadingOne) return <LoadingSpinner />;
 

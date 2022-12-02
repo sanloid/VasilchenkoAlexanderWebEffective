@@ -6,7 +6,7 @@ import Pagination from 'components/Pagination';
 import SearchForm from 'components/SearchForm';
 import { observer } from 'mobx-react-lite';
 import React, { useEffect } from 'react';
-import { useParams, useSearchParams } from 'react-router-dom';
+import { useLocation, useParams, useSearchParams } from 'react-router-dom';
 import { CharResponse } from 'types/api/Characters/CharResponse';
 import { SeriesResponse } from 'types/api/Series/SeriesResponse';
 import { v4 } from 'uuid';
@@ -22,6 +22,7 @@ const PageBase: React.FC<PageBasePropType> = observer(({ store }) => {
   const { page } = useParams();
   const [search] = useSearchParams();
   const name = search.get('name');
+  const location = useLocation().pathname.split('/')[1];
 
   useEffect(() => {
     if (page) {
@@ -32,7 +33,7 @@ const PageBase: React.FC<PageBasePropType> = observer(({ store }) => {
       }
     }
     window.scrollTo(0, 0);
-  }, [page, name]);
+  }, [page, name, location]);
 
   if (store.loadingList) return <LoadingSpinner />;
 

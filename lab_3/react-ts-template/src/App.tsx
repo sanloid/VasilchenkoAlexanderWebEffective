@@ -1,29 +1,33 @@
 import React, { FC } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import CharactersDetails from 'pages/Characters/CharactersDetails';
-import SeriesDetails from 'pages/Series/SeriesDetails';
-import ComicsDetails from 'pages/Comics/ComicsDetails';
-import Characters from './pages/Characters/Characters';
-import Series from './pages/Series/Series';
-import Comics from './pages/Comics/Comics';
+import store from 'stores/index';
+import { v4 } from 'uuid';
+import PageBase from 'pages/PageBase';
+import Detail from 'pages/Detail';
 import Layout from './Layout';
 import './index.css';
 
 const App: FC = () => {
+  const route = [
+    { path: 'characters', store: store.CharStore },
+    { path: 'comics', store: store.ComicsStore },
+    { path: 'series', store: store.SeriesStore }
+  ];
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
-        <Route path="characters" element={<Characters />} />
-        <Route path="comics" element={<Comics />} />
-        <Route path="series" element={<Series />} />
-
-        <Route path="characters/page/:page" element={<Characters />} />
-        <Route path="comics/page/:page" element={<Comics />} />
-        <Route path="series/page/:page" element={<Series />} />
-
-        <Route path="characters/:id" element={<CharactersDetails />} />
-        <Route path="comics/:id" element={<ComicsDetails />} />
-        <Route path="series/:id" element={<SeriesDetails />} />
+        {route.map((e) => (
+          <>
+            <Route
+              path={`${e.path}/page/:page`}
+              element={<PageBase store={e.store} />}
+            />
+            <Route
+              path={`${e.path}/:id`}
+              element={<Detail store={e.store} />}
+            />
+          </>
+        ))}
       </Route>
     </Routes>
   );
