@@ -47,7 +47,6 @@ class Store {
         Number(page),
         this.OnPage,
         this.apiPath
-        // this.getApiPath()
       );
 
       runInAction(() => {

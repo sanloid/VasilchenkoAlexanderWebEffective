@@ -1,22 +1,17 @@
 import React, { FC } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import store from 'stores/index';
 import { v4 } from 'uuid';
+import RouteInfo from 'RouteInfo';
 import PageBase from 'pages/PageBase';
 import Detail from 'pages/Detail';
 import Layout from './Layout';
 import './index.css';
 
 const App: FC = () => {
-  const route = [
-    { path: 'characters', store: store.CharStore },
-    { path: 'comics', store: store.ComicsStore },
-    { path: 'series', store: store.SeriesStore }
-  ];
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
-        {route.map((e) => (
+        {RouteInfo.map((e) => (
           <>
             <Route
               path={`${e.path}/page/:page`}

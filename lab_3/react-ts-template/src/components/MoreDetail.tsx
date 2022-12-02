@@ -1,21 +1,14 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { CharComicsResponse } from 'types/api/Characters/CharComicsResponse';
 import { CharSeriesResponse } from 'types/api/Characters/CharSeriesResponse';
-import { ComicsCharacterResponse } from 'types/api/Comics/ComicsCharacterResponse';
+import { ContentType } from 'types/api/ContentType';
 import { SeriesCharacterResponse } from 'types/api/Series/SeriesCharacterResponse';
-import { SeriesComicsResponse } from 'types/api/Series/SeriesComicsResponse';
 import { v4 } from 'uuid';
 
 export interface MoreDetailPropType {
   title: string;
   path: string;
-  content:
-    | SeriesCharacterResponse
-    | ComicsCharacterResponse
-    | SeriesComicsResponse
-    | CharComicsResponse
-    | CharSeriesResponse;
+  content: ContentType;
 }
 
 export type SeriesCharOneResp = SeriesCharacterResponse['data']['results']['0'];
