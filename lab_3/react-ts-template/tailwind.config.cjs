@@ -11,6 +11,11 @@ module.exports = {
       },
       fontFamily: {
         marvel: ['Marvel']
+      },
+      screens: {
+        xxxsm: '280px',
+        xxsm: '350px',
+        xsm: '540px'
       }
     }
   },

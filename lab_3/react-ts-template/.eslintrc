@@ -13,9 +13,7 @@
     "Atomics": "readonly",
     "SharedArrayBuffer": "readonly"
   },
-  "plugins": [
-    "jest"
-  ],
+  "plugins": ["jest"],
   "extends": [
     "airbnb-typescript",
     "airbnb/hooks",
@@ -29,13 +27,8 @@
   "settings": {
     "import/resolver": {
       "node": {
-        "paths": [
-          "src"
-        ],
-        "extensions": [
-          ".js",
-          ".jsx"
-        ]
+        "paths": ["src"],
+        "extensions": [".js", ".jsx"]
       }
     }
   },
@@ -49,16 +42,11 @@
     "react/jsx-props-no-spreading": "off",
     "react/require-default-props": "off",
     "import/no-extraneous-dependencies": "off",
-    "react/jsx-indent-props": [
-      2,
-      2
-    ],
-    "react/jsx-closing-bracket-location": [
-      2,
-      "tag-aligned"
-    ],
+    "react/jsx-indent-props": [2, 2],
+    "react/jsx-closing-bracket-location": [2, "tag-aligned"],
     "@typescript-eslint/no-inferrable-types": "off",
     "no-inferrable-types": "off",
-    "import/prefer-default-export": "off"
+    "import/prefer-default-export": "off",
+    "@typescript-eslint/no-unused-vars": "off"
   }
 }

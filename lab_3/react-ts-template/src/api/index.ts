@@ -1,5 +1,5 @@
-import posts from 'api/posts';
+import common from './common';
 
 export default {
-  posts
+  common
 };
