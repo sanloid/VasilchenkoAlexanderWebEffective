@@ -20,7 +20,9 @@ const Detail: React.FC<DetailPropType> = observer(({ store }) => {
     window.scrollTo(0, 0);
   }, [location]);
 
-  if (store.loadingOne) return <LoadingSpinner />;
+  if (store.loadingOne) {
+    return <LoadingSpinner />;
+  }
 
   if (store.oneResponse) {
     if (store.oneResponse.code !== 200) {

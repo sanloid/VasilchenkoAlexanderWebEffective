@@ -4,13 +4,13 @@ import { ContentType } from 'types/api/ContentType';
 import { ResponsesTypes } from 'types/api/ResponsesType';
 
 class Store {
-  Response: ResponsesTypes;
+  response: ResponsesTypes;
 
   oneResponse: ResponsesTypes;
 
   pageLimit: number;
 
-  OnPage: number = 9;
+  onPage: number = 9;
 
   loadingList: boolean;
 
@@ -24,10 +24,10 @@ class Store {
 
   constructor(apiPath: string, contentList: string[]) {
     makeObservable(this, {
-      Response: observable,
+      response: observable,
       oneResponse: observable,
       pageLimit: observable,
-      OnPage: observable,
+      onPage: observable,
       loadingList: observable,
       loadingOne: observable,
       content: observable,
@@ -45,13 +45,13 @@ class Store {
 
       const response = await api.common.getList(
         Number(page),
-        this.OnPage,
+        this.onPage,
         this.apiPath
       );
 
       runInAction(() => {
-        this.Response = response;
-        this.pageLimit = Math.ceil(response.data.total / this.OnPage);
+        this.response = response;
+        this.pageLimit = Math.ceil(response.data.total / this.onPage);
       });
     } catch (error) {
       console.error(error);
@@ -64,9 +64,7 @@ class Store {
 
   getOne = async (id: string): Promise<void> => {
     try {
-      runInAction(() => {
-        this.loadingOne = true;
-      });
+      this.loadingOne = true;
 
       const response = await api.common.getOne(id, this.apiPath);
 
@@ -91,15 +89,15 @@ class Store {
 
       const response = await api.common.searchByName(
         name,
-        this.OnPage,
+        this.onPage,
         Number(page),
         this.apiPath,
         this.apiPath === 'characters' ? 'name' : 'title'
       );
 
       runInAction(() => {
-        this.Response = response;
-        this.pageLimit = Math.ceil(response.data.total / this.OnPage);
+        this.response = response;
+        this.pageLimit = Math.ceil(response.data.total / this.onPage);
       });
     } catch (error) {
       console.error(error);

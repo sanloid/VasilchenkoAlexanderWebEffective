@@ -11,6 +11,11 @@ export interface PaginationPropType {
   max: number;
 }
 
+const activeStyle =
+  'cursor-pointer z-10 px-3 py-2 leading-tight text-red-600 border border-red-300 bg-blue-50 hover:bg-red-100 hover:text-red-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white';
+const notActiveStyle =
+  'cursor-pointer px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white';
+
 const Pagination: React.FC<PaginationPropType> = ({ max }) => {
   const navigate = useNavigate();
   const [searchParam] = useSearchParams();
@@ -39,10 +44,6 @@ const Pagination: React.FC<PaginationPropType> = ({ max }) => {
     .map((e) => e + 1)
     .slice(interval.start, interval.end);
 
-  const activeStyle =
-    'cursor-pointer z-10 px-3 py-2 leading-tight text-red-600 border border-red-300 bg-blue-50 hover:bg-red-100 hover:text-red-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white';
-  const notActiveStyle =
-    'cursor-pointer px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white';
   return (
     <div className="container mx-auto flex justify-center pb-10">
       <nav>
