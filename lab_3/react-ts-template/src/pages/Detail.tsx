@@ -78,7 +78,7 @@ const Detail: React.FC<DetailPropType> = observer(({ store }) => {
               title={key}
               path={`/${key}/`}
               content={value}
-              key={v4()}
+              key={key}
             />
           ) : null;
         })}

@@ -1,7 +1,8 @@
 import api from 'api';
-import { observable, makeObservable, runInAction, action } from 'mobx';
+import { observable, makeObservable, runInAction, action, toJS } from 'mobx';
 import { ContentType } from 'types/api/ContentType';
 import { ResponsesTypes } from 'types/api/ResponsesType';
+import { Favourite } from 'types/Favourite';
 
 class Store {
   response: ResponsesTypes;
@@ -22,6 +23,8 @@ class Store {
 
   contentList: string[] = [];
 
+  favourites: Favourite[] = [];
+
   constructor(apiPath: string, contentList: string[]) {
     makeObservable(this, {
       response: observable,
@@ -31,13 +34,38 @@ class Store {
       loadingList: observable,
       loadingOne: observable,
       content: observable,
+      favourites: observable,
       getList: action,
       getOne: action,
-      searchByName: action
+      searchByName: action,
+      heartClick: action
     });
     this.apiPath = apiPath;
     this.contentList = contentList;
+    this.favourites = JSON.parse(
+      localStorage.getItem(`fav${this.apiPath}`) || '[]'
+    );
   }
+
+  heartClick = (card: Favourite): void => {
+    if (this.isFavourite(card.id)) {
+      this.favourites = this.favourites.filter(
+        (e) => String(e.id) !== String(card.id)
+      );
+    } else {
+      this.favourites.push(card);
+    }
+    localStorage.setItem(
+      `fav${this.apiPath}`,
+      JSON.stringify([...this.favourites])
+    );
+  };
+
+  isFavourite = (id: string): boolean => {
+    return (
+      this.favourites.find((e) => String(e.id) === String(id)) !== undefined
+    );
+  };
 
   getList = async (page: string): Promise<void> => {
     try {

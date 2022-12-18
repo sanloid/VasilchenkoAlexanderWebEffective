@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import RouteInfo from 'RouteInfo';
 import { NavLink } from 'react-router-dom';
-import { v4 } from 'uuid';
 
 const Header: React.FC = () => {
   const [mode, setMode] = useState(false);
@@ -22,13 +21,20 @@ const Header: React.FC = () => {
         <nav className="md:ml-auto flex flex-wrap items-center text-base justify-center">
           {RouteInfo.map((e) => (
             <NavLink
-              key={v4()}
+              key={e.path}
               to={`${e.path}/page/1`}
               className="cursor-pointer text-white text-xl hover:rounded-xl hover:bg-white p-5 mr-5 hover:text-black"
             >
               {e.name}
             </NavLink>
           ))}
+          <NavLink
+            key="favourites"
+            to="favourites"
+            className="cursor-pointer text-white text-xl hover:rounded-xl hover:bg-white p-5 mr-5 hover:text-black"
+          >
+            Favourites
+          </NavLink>
         </nav>
         <label
           htmlFor="red-toggle"

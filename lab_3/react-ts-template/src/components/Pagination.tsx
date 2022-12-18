@@ -5,7 +5,6 @@ import {
   useParams,
   useSearchParams
 } from 'react-router-dom';
-import { v4 } from 'uuid';
 
 export interface PaginationPropType {
   max: number;
@@ -80,7 +79,7 @@ const Pagination: React.FC<PaginationPropType> = ({ max }) => {
 
           {pages.map((e) => {
             return (
-              <li key={v4()}>
+              <li key={e}>
                 <button
                   onClick={() => {
                     navigate({

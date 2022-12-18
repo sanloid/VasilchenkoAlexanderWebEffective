@@ -9,7 +9,6 @@ import React, { useEffect } from 'react';
 import { useLocation, useParams, useSearchParams } from 'react-router-dom';
 import { CharResponse } from 'types/api/Characters/CharResponse';
 import { SeriesResponse } from 'types/api/Series/SeriesResponse';
-import { v4 } from 'uuid';
 
 export interface PageBasePropType {
   store: Store;
@@ -64,7 +63,8 @@ const PageBase: React.FC<PageBasePropType> = observer(({ store }) => {
                 description={e.description}
                 id={e.id}
                 img={e.thumbnail}
-                key={v4()}
+                location={location}
+                key={e.id}
               />
             ))}
             {!store.response?.data.count ? (
