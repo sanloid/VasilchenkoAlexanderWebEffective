@@ -15,8 +15,10 @@ export interface CardPropType {
   };
 }
 
-const activeStyle = ' top-8 right-8 text-2xl absolute text-red-500';
-const notActiveStyle = ' top-8 right-8 text-2xl absolute text-gray-600';
+const activeStyle =
+  'cursor-pointer top-8 right-8 text-2xl absolute text-red-500';
+const notActiveStyle =
+  'cursor-pointer top-8 right-8 text-2xl absolute text-gray-600';
 
 const Card: React.FC<CardPropType> = observer(
   ({ img, description, name, id, location }) => {
