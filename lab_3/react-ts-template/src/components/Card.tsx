@@ -15,15 +15,15 @@ export interface CardPropType {
   };
 }
 
-const activeStyle = 'text-red-500';
-const notActiveStyle = 'text-gray-600';
+const activeStyle = ' top-8 right-8 text-2xl absolute text-red-500';
+const notActiveStyle = ' top-8 right-8 text-2xl absolute text-gray-600';
 
 const Card: React.FC<CardPropType> = observer(
   ({ img, description, name, id, location }) => {
     const store = getStoreByName(location);
     return (
       <>
-        <div className="p-4 md:w-1/3 sm:w-1/2 xsm:w-1/2 xxsm:w-full xxxsm:w-full font-marvel sm:mb-0 mb-6">
+        <div className="relative p-4 md:w-1/3 sm:w-1/2 xsm:w-1/2 xxsm:w-full xxxsm:w-full font-marvel sm:mb-0 mb-6">
           <div className="rounded-lg h-64 overflow-hidden">
             <img
               alt="content"
