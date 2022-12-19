@@ -1,16 +1,17 @@
 import api from 'api';
-import { observable, makeObservable, runInAction, action } from 'mobx';
+import { observable, makeObservable, runInAction, action, toJS } from 'mobx';
 import { ContentType } from 'types/api/ContentType';
 import { ResponsesTypes } from 'types/api/ResponsesType';
+import { Favourite } from 'types/Favourite';
 
 class Store {
-  Response: ResponsesTypes;
+  response: ResponsesTypes;
 
   oneResponse: ResponsesTypes;
 
   pageLimit: number;
 
-  OnPage: number = 9;
+  onPage: number = 9;
 
   loadingList: boolean;
 
@@ -22,22 +23,49 @@ class Store {
 
   contentList: string[] = [];
 
+  favourites: Favourite[] = [];
+
   constructor(apiPath: string, contentList: string[]) {
     makeObservable(this, {
-      Response: observable,
+      response: observable,
       oneResponse: observable,
       pageLimit: observable,
-      OnPage: observable,
+      onPage: observable,
       loadingList: observable,
       loadingOne: observable,
       content: observable,
+      favourites: observable,
       getList: action,
       getOne: action,
-      searchByName: action
+      searchByName: action,
+      heartClick: action
     });
     this.apiPath = apiPath;
     this.contentList = contentList;
+    this.favourites = JSON.parse(
+      localStorage.getItem(`fav${this.apiPath}`) || '[]'
+    );
   }
+
+  heartClick = (card: Favourite): void => {
+    if (this.isFavourite(card.id)) {
+      this.favourites = this.favourites.filter(
+        (e) => String(e.id) !== String(card.id)
+      );
+    } else {
+      this.favourites.push(card);
+    }
+    localStorage.setItem(
+      `fav${this.apiPath}`,
+      JSON.stringify([...this.favourites])
+    );
+  };
+
+  isFavourite = (id: string): boolean => {
+    return (
+      this.favourites.find((e) => String(e.id) === String(id)) !== undefined
+    );
+  };
 
   getList = async (page: string): Promise<void> => {
     try {
@@ -45,13 +73,13 @@ class Store {
 
       const response = await api.common.getList(
         Number(page),
-        this.OnPage,
+        this.onPage,
         this.apiPath
       );
 
       runInAction(() => {
-        this.Response = response;
-        this.pageLimit = Math.ceil(response.data.total / this.OnPage);
+        this.response = response;
+        this.pageLimit = Math.ceil(response.data.total / this.onPage);
       });
     } catch (error) {
       console.error(error);
@@ -64,9 +92,7 @@ class Store {
 
   getOne = async (id: string): Promise<void> => {
     try {
-      runInAction(() => {
-        this.loadingOne = true;
-      });
+      this.loadingOne = true;
 
       const response = await api.common.getOne(id, this.apiPath);
 
@@ -91,15 +117,15 @@ class Store {
 
       const response = await api.common.searchByName(
         name,
-        this.OnPage,
+        this.onPage,
         Number(page),
         this.apiPath,
         this.apiPath === 'characters' ? 'name' : 'title'
       );
 
       runInAction(() => {
-        this.Response = response;
-        this.pageLimit = Math.ceil(response.data.total / this.OnPage);
+        this.response = response;
+        this.pageLimit = Math.ceil(response.data.total / this.onPage);
       });
     } catch (error) {
       console.error(error);

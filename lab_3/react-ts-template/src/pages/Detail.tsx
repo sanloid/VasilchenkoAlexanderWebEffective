@@ -20,7 +20,9 @@ const Detail: React.FC<DetailPropType> = observer(({ store }) => {
     window.scrollTo(0, 0);
   }, [location]);
 
-  if (store.loadingOne) return <LoadingSpinner />;
+  if (store.loadingOne) {
+    return <LoadingSpinner />;
+  }
 
   if (store.oneResponse) {
     if (store.oneResponse.code !== 200) {
@@ -76,7 +78,7 @@ const Detail: React.FC<DetailPropType> = observer(({ store }) => {
               title={key}
               path={`/${key}/`}
               content={value}
-              key={v4()}
+              key={key}
             />
           ) : null;
         })}

@@ -1,9 +1,9 @@
+import { observer } from 'mobx-react-lite';
 import React from 'react';
-import { NavLink } from 'react-router-dom';
 import { CharSeriesResponse } from 'types/api/Characters/CharSeriesResponse';
 import { ContentType } from 'types/api/ContentType';
 import { SeriesCharacterResponse } from 'types/api/Series/SeriesCharacterResponse';
-import { v4 } from 'uuid';
+import Card from './Card';
 
 export interface MoreDetailPropType {
   title: string;
@@ -29,27 +29,17 @@ const MoreDetail: React.FC<MoreDetailPropType> = ({ title, path, content }) => {
         <div className="flex flex-wrap -m-4">
           {content ? (
             content.data.results.map((e) => (
-              <div key={v4()} className="xl:w-1/4 md:w-1/2 p-4">
-                <div className="bg-gray-100 p-6 rounded-lg">
-                  <img
-                    className="h-40 rounded w-full object-cover object-center mb-6"
-                    src={`${e.thumbnail.path}.${e.thumbnail.extension}`}
-                    alt="content"
-                  />
-                  <h2 className="text-lg text-gray-900 font-medium title-font mb-4">
-                    {(e as SeriesCharOneResp).name
-                      ? (e as SeriesCharOneResp).name
-                      : (e as CharSeriesOneResp).title}
-                  </h2>
-                  <p className="leading-relaxed text-base">{e.description}</p>
-                  <NavLink
-                    to={`${path}${e.id}`}
-                    className="cursor-pointer text-red-600 dark:text-gray-600 border-2 p-2 rounded-xl border-red-600 dark:border-gray-600 hover:bg-red-600 dark:hover:bg-gray-600 hover:text-white dark:hover:text-white inline-flex items-center mt-3"
-                  >
-                    See More
-                  </NavLink>
-                </div>
-              </div>
+              <Card
+                id={String(e.id)}
+                name={
+                  (e as SeriesCharOneResp).name
+                    ? (e as SeriesCharOneResp).name
+                    : (e as CharSeriesOneResp).title
+                }
+                description={e.description}
+                location={title}
+                img={e.thumbnail}
+              />
             ))
           ) : (
             <></>

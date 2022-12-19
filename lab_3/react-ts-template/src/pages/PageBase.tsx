@@ -9,7 +9,6 @@ import React, { useEffect } from 'react';
 import { useLocation, useParams, useSearchParams } from 'react-router-dom';
 import { CharResponse } from 'types/api/Characters/CharResponse';
 import { SeriesResponse } from 'types/api/Series/SeriesResponse';
-import { v4 } from 'uuid';
 
 export interface PageBasePropType {
   store: Store;
@@ -37,12 +36,12 @@ const PageBase: React.FC<PageBasePropType> = observer(({ store }) => {
 
   if (store.loadingList) return <LoadingSpinner />;
 
-  if (store.Response) {
-    if (store.Response.code !== 200) {
+  if (store.response) {
+    if (store.response.code !== 200) {
       return (
         <ErrorFallback
-          code={store.Response.code}
-          message={store.Response.status}
+          code={store.response.code}
+          message={store.response.status}
         />
       );
     }
@@ -54,7 +53,7 @@ const PageBase: React.FC<PageBasePropType> = observer(({ store }) => {
       <section className="text-gray-600 body-font min-h-screen">
         <div className="container px-5 py-24 mx-auto">
           <div className="flex flex-wrap sm:-m-4 -mx-4 -mb-10 -mt-4">
-            {store.Response?.data.results.map((e) => (
+            {store.response?.data.results.map((e) => (
               <Card
                 name={
                   (e as SeriesOneResp).title
@@ -64,10 +63,11 @@ const PageBase: React.FC<PageBasePropType> = observer(({ store }) => {
                 description={e.description}
                 id={e.id}
                 img={e.thumbnail}
-                key={v4()}
+                location={location}
+                key={e.id}
               />
             ))}
-            {!store.Response?.data.count ? (
+            {!store.response?.data.count ? (
               <div className="mx-auto text-3xl text-gray-400">
                 oops there is nothing...
               </div>
